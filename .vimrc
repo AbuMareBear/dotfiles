@@ -1,7 +1,22 @@
+set encoding=utf-8
+
+" Use the space key as leader
+let mapleader = " "
+
+set nobackup
+set nowritebackup
+set noswapfile
+
+set number
+set numberwidth=5
+
+set tabstop=2
+set shiftwidth=2 
+set shiftround 
+set expandtab
+
+set textwidth=80
+set colorcolumn=+1
+
 colorscheme jellybeans
-set tabstop=2 shiftwidth=2 expandtab
-" set number
-set relativenumber
-set backupdir=~/vim/tmp,.
-set directory=~/vim/tmp,.
-set colorcolumn=80
+
