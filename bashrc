@@ -135,7 +135,3 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Alias config for git in the home directory to keep track of dotfiles while not
-# interfering with git elsewhere.
-# This method is described here: https://www.atlassian.com/git/tutorials/dotfiles
-alias config='/usr/bin/git --git-dir=/home/abdullah/.cfg/ --work-tree=/home/abdullah'
