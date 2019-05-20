@@ -1,5 +1,9 @@
 set encoding=utf-8
 
+" Plugins
+:packadd sensible
+:packadd ctrlp.vim
+
 " Use the space key as leader
 let mapleader = " "
 
