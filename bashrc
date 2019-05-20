@@ -135,3 +135,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# RVM needs this to automatially load in project specific ruby version and
+# gemsets.
+cd .
+
