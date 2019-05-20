@@ -18,5 +18,8 @@ set expandtab
 set textwidth=80
 set colorcolumn=+1
 
+nmap <leader>g :tabe Gemfile<cr>
+nmap <leader>r :tabe config/routes.rb<cr>
+
 colorscheme jellybeans
 
