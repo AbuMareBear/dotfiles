@@ -2,7 +2,9 @@ set encoding=utf-8
 
 " Plugins
 :packadd sensible
-:packadd ctrlp.vim
+:packadd ctrlp\.vim
+:packadd vim-tmux-navigator
+:packadd vim-tmux-runner
 
 " Use the space key as leader
 let mapleader = " "
@@ -30,3 +32,10 @@ colorscheme jellybeans
 " CtrlP fuzzy search
 " Exclude files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
