@@ -135,6 +135,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export PATH="$PATH:~/.flutterio/flutter/bin"
+
 # RVM needs this to automatially load in project specific ruby version and
 # gemsets.
 cd .
