@@ -9,6 +9,7 @@ set encoding=utf-8
 :packadd vim-slim
 :packadd dart-vim-plugin
 :packadd ale
+:packadd surround
 
 " Use the space key as leader
 let mapleader = " "
