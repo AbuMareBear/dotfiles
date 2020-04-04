@@ -34,6 +34,7 @@ let dart_format_on_save = 1
 
 nmap <leader>g :tabe Gemfile<cr>
 nmap <leader>r :tabe config/routes.rb<cr>
+nmap <leader>l :tabe config/locales/en.yml<cr>
 
 colorscheme jellybeans
 
