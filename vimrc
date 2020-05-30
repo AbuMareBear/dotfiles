@@ -6,8 +6,6 @@ set encoding=utf-8
 :packadd vim-tmux-navigator
 :packadd vim-tmux-runner
 :packadd vim-rails
-:packadd vim-slim
-:packadd dart-vim-plugin
 :packadd ale
 :packadd surround
 
@@ -26,11 +24,8 @@ set shiftwidth=2
 set shiftround 
 set expandtab
 
-set textwidth=80
+set textwidth=100
 set colorcolumn=+1
-
-" Dart and Flutter
-let dart_format_on_save = 1
 
 nmap <leader>g :tabe Gemfile<cr>
 nmap <leader>r :tabe config/routes.rb<cr>

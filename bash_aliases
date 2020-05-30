@@ -4,7 +4,7 @@ alias rtm='rails test:models'
 alias rts='rails test:system'
 alias rtf='annotate && brakeman -q && rubocop --safe-auto-correct && rails test:system test'
 
-alias rr='rspec'
+alias rr='rspec --exclude-pattern "spec/features/**/*_spec.rb"'
 alias rrf='annotate && brakeman -q && rubocop --safe-auto-correct && rspec'
 alias rrm='rspec ./spec/models'
 alias rrp='rspec ./spec/policies'
