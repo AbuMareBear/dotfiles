@@ -7,7 +7,7 @@ set encoding=utf-8
 :packadd vim-tmux-runner
 :packadd vim-rails
 :packadd ale
-:packadd surround
+:packadd vim-surround
 
 " Use the space key as leader
 let mapleader = " "
