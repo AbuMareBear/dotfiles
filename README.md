@@ -3,6 +3,11 @@
 ## Symbolic links
 
 ```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+```bash
+ln -s ~/code/dotfiles/zshrc ~/.zshrc
 ln -s ~/code/dotfiles/bash_aliases ~/.bash_aliases
 ln -s ~/code/dotfiles/bash_prompt ~/.bash_prompt
 ln -s ~/code/dotfiles/bashrc ~/.bashrc
