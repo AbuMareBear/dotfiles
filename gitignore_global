@@ -44,3 +44,6 @@ notes.txt
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# For those times when you run npm install instead of yarn install
+package-lock.json
