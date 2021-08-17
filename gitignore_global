@@ -51,3 +51,4 @@ package-lock.json
 Brewfile.lock.json
 
 .ruby-gemset
+.byebug_history
