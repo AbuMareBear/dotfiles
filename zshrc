@@ -107,9 +107,6 @@ alias rtf="annotate && brakeman -q && standardrb --fix && rails test:system test
 # Add brewed python to the font of the path. Doing this to use brewed python instead of system python.
 PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
 export WD_CACHE_TIME=31536000
 
 if command -v pyenv 1>/dev/null 2>&1; then
