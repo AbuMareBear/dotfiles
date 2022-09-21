@@ -116,9 +116,17 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+export DAML_PATH="$HOME/.daml/bin"
+export PATH="$PATH:$DAML_PATH"
+
+export LOCAL_BIN_PATH="$HOME/.local/bin"
+export PATH="$PATH:$LOCAL_BIN_PATH"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-#  Load rbenv automatically
-eval "$(rbenv init - zsh)"
+[ -f "/Users/abdullah/.ghcup/env" ] && source "/Users/abdullah/.ghcup/env" # ghcup-env
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
