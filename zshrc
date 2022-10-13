@@ -102,7 +102,7 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias rtf="annotate && brakeman -q && standardrb --fix && rails test:system test"
+alias r="bin/rails"
 
 # Add brewed python to the font of the path. Doing this to use brewed python instead of system python.
 PATH="/usr/local/opt/python/libexec/bin:$PATH"
