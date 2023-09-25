@@ -105,6 +105,9 @@ export EDITOR='vim'
 alias r="bin/rails"
 alias rt="bin/rails test"
 
+export DISABLE_SPRING=true
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
 # Add brewed python to the font of the path. Doing this to use brewed python instead of system python.
 PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
