@@ -38,6 +38,9 @@ colorscheme jellybeans
 " Exclude files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
+" Indent these HTML tags too
+let g:html_indent_inctags = 'p'
+
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
