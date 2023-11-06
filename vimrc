@@ -25,7 +25,7 @@ set shiftwidth=2
 set shiftround 
 set expandtab
 
-set textwidth=120
+set textwidth=81
 set colorcolumn=+1
 
 nmap <leader>g :tabe Gemfile<cr>
