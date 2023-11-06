@@ -32,7 +32,8 @@ nmap <leader>g :tabe Gemfile<cr>
 nmap <leader>r :tabe config/routes.rb<cr>
 nmap <leader>l :tabe config/locales/en.yml<cr>
 
-colorscheme jellybeans
+colorscheme one
+set background=light
 
 " CtrlP fuzzy search
 " Exclude files in .gitignore
