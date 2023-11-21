@@ -54,6 +54,9 @@ autocmd VimResized * :wincmd =
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
 
+highlight StatusLine   cterm=NONE ctermfg=White ctermbg=Black gui=NONE guifg=White guibg=Black
+highlight StatusLineNC cterm=NONE ctermfg=White ctermbg=Black gui=NONE guifg=Black guibg=Black
+
 let g:ale_linters = {
 \   'ruby': ['standard'],
 \}
