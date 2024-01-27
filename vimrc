@@ -50,6 +50,9 @@ let g:html_indent_inctags = 'p'
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
+" grep files under version control
+command -nargs=1 Hol noautocmd vimgrep /<args>/ `git ls-files`
+
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
