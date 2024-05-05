@@ -136,3 +136,4 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:$HOME/.rvm/bin"
 
 ulimit -n 1024
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"

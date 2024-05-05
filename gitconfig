@@ -9,3 +9,5 @@
 	glog = log -E -i --grep
 [init]
 	defaultBranch = main
+[pager]
+	branch = cat
