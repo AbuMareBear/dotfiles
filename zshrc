@@ -104,6 +104,7 @@ export EDITOR='vim'
 
 alias r="bin/rails"
 alias rt="bin/rails test"
+alias n="npm run"
 
 export DISABLE_SPRING=true
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
