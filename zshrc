@@ -107,7 +107,7 @@ alias rt="bin/rails test"
 alias n="npm run"
 alias p="npx prisma"
 alias two="git checkout main && git pull && bundle && yarn && bin/rails dev:prime"
-alias forg="get checkout staging && git pull && npm && n reset-dev"
+alias forg="git checkout staging && git pull && npm && n reset-dev"
 
 export DISABLE_SPRING=true
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
