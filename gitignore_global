@@ -5,6 +5,9 @@
 # VIM
 *.swp
 
+# Cursor
+.cursorrules
+
 # Notes is to record ideas without
 notes.txt
 
