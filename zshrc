@@ -113,6 +113,8 @@ alias lus="git checkout staging && git pull && npm i && n reset-dev && n dev"
 export DISABLE_SPRING=true
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
+plugins=(asdf)
+
 # Add brewed python to the font of the path. Doing this to use brewed python instead of system python.
 PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
@@ -142,3 +144,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 ulimit -n 1024
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+

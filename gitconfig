@@ -7,6 +7,7 @@
 [alias]
 	sla = log --oneline --decorate --graph --all
 	glog = log -E -i --grep
+  wip = commit -m "wip"
 [init]
 	defaultBranch = main
 [pager]
