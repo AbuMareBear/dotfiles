@@ -21,12 +21,7 @@ ln -sf ~/code/personal/dotfiles/gitconfig ~/.gitconfig
 mkdir -p ~/.vim/pack/plugins/opt
 cd ~/.vim/pack/plugins/opt
 git clone git@github.com:tpope/vim-sensible.git
-git clone git@github.com:kien/ctrlp.vim.git
 git clone git@github.com:christoomey/vim-tmux-navigator.git
-git clone git@github.com:christoomey/vim-tmux-runner.git
-git clone git@github.com:tpope/vim-rails.git
-git clone git@github.com:dense-analysis/ale.git
-git clone git@github.com:tpope/vim-surround.git
 git clone git@github.com:junegunn/fzf.git
 git clone git@github.com:junegunn/fzf.vim.git
 ```
@@ -68,7 +63,7 @@ The configuration includes fuzzy finding with FZF for efficient file navigation.
 
 #### Key Bindings
 
-- `Ctrl+p`: Open file finder (similar to CtrlP plugin)
+- `Ctrl+p`: Open file finder
 - `<leader>b`: Browse open buffers
 - `<leader>g`: Search git files (respects .gitignore)
 - `<leader>r`: Search file contents using ripgrep
