@@ -36,3 +36,8 @@ mkdir -p ~/.vim/colors
 cd ~/.vim/colors
 curl -O https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim
 ```
+
+## Vim Usage
+
+- Space is configured as the leader key
+- Based on vim-sensible for good defaults
