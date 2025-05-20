@@ -11,6 +11,20 @@
 # Notes is to record ideas without
 notes.txt
 
+# asdf
+.tool-versions
+
+# Rails
+development.local.rb
+
+# TWO
+Brewfile.lock.json
+/.docs
+CLAUDE.md
+/config/environments/custom.rb
+/bin/custom-dev
+/config/initializers/custom_hosts.rb
+
 # Compiled source #
 ###################
 *.com
@@ -50,8 +64,6 @@ Thumbs.db
 
 # For those times when you run npm install instead of yarn install
 package-lock.json
-
-Brewfile.lock.json
 
 .ruby-gemset
 .byebug_history

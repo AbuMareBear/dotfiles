@@ -3,7 +3,7 @@
 	email = abdul@hey.com
 [core]
 	editor = vim
-	excludesfile = /Users/abdullah/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [alias]
 	sla = log --oneline --decorate --graph --all
 	glog = log -E -i --grep
