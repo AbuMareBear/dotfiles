@@ -70,10 +70,12 @@ zstyle ':omz:update' frequency 13
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.asdf/asdf.sh
+
+# ASDF setup - load after Oh My Zsh
+. "$HOME/.asdf/asdf.sh"
 
 # User configuration
 
@@ -93,7 +95,7 @@ export EDITOR='vim'
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 
-# ASDF
+# ASDF shims
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
