@@ -96,6 +96,13 @@ The configuration includes ALE (Asynchronous Lint Engine) for real-time linting:
 - `Prefix + C-j`: Show session tree
 - `Prefix + z`: Toggle zoom/maximize pane
 
+### Visual Customization
+
+The active pane is highlighted for better visibility:
+- Active pane has bright blue borders
+- Active pane has darker background
+- Inactive panes are slightly dimmed with grey borders
+
 ### Managing Tmux Sessions
 
 - Create a new session: `tmux new-session -s project_name -c /path/to/project`
