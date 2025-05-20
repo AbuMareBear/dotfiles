@@ -46,7 +46,27 @@ curl -O https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/
 
 ### FZF Integration
 
-The configuration includes fuzzy finding with FZF for efficient file navigation:
+The configuration includes fuzzy finding with FZF for efficient file navigation.
+
+#### Prerequisites
+
+1. Install the FZF executable:
+   ```bash
+   # For macOS with Homebrew
+   brew install fzf
+   
+   # For Linux
+   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+   ~/.fzf/install
+   ```
+
+2. Optional: Add FZF to runtime path in vimrc if the above plugins don't work:
+   ```vim
+   " For macOS with Homebrew
+   set rtp+=/opt/homebrew/opt/fzf
+   ```
+
+#### Key Bindings
 
 - `Ctrl+p`: Open file finder (similar to CtrlP plugin)
 - `<leader>b`: Browse open buffers

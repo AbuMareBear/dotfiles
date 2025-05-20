@@ -6,6 +6,9 @@ packadd vim-tmux-navigator
 packadd fzf
 packadd fzf.vim
 
+" Add Homebrew-installed FZF to runtime path (macOS)
+set rtp+=/opt/homebrew/opt/fzf
+
 " Basic settings
 let mapleader = " "
 
