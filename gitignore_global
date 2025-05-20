@@ -8,6 +8,9 @@
 # Cursor
 .cursorrules
 
+# Claude
+.claude/
+
 # Notes is to record ideas without
 notes.txt
 
