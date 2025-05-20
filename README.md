@@ -7,14 +7,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ```
 
 ```bash
-ln -s ~/code/dotfiles/zshrc ~/.zshrc
-ln -s ~/code/dotfiles/bash_prompt ~/.bash_prompt
-ln -s ~/code/dotfiles/bashrc ~/.bashrc
-ln -s ~/code/dotfiles/gemrc ~/.gemrc
-ln -s ~/code/dotfiles/tmux.conf ~/.tmux.conf
-ln -s ~/code/dotfiles/vimrc ~/.vimrc
-ln -s ~/code/dotfiles/gitignore_global ~/.gitignore_global
-ln -s ~/code/dotfiles/gitconfig ~/.gitconfig
+ln -sf ~/code/personal/dotfiles/zshrc ~/.zshrc
+ln -sf ~/code/personal/dotfiles/gemrc ~/.gemrc
+ln -sf ~/code/personal/dotfiles/tmux.conf ~/.tmux.conf
+ln -sf ~/code/personal/dotfiles/vimrc ~/.vimrc
+ln -sf ~/code/personal/dotfiles/gitignore_global ~/.gitignore_global
+ln -sf ~/code/personal/dotfiles/gitconfig ~/.gitconfig
 ```
 
 ## Vim Plugins
@@ -33,7 +31,7 @@ git clone git@github.com:tpope/vim-surround.git
 
 ## Vim Color Scheme
 
-```base
+```bash
 mkdir -p ~/.vim/colors
 cd ~/.vim/colors
 curl -O https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim
