@@ -35,12 +35,7 @@ Vim plugins can be installed with:
 mkdir -p ~/.vim/pack/plugins/opt
 cd ~/.vim/pack/plugins/opt
 git clone git@github.com:tpope/vim-sensible.git
-git clone git@github.com:kien/ctrlp.vim.git
 git clone git@github.com:christoomey/vim-tmux-navigator.git
-git clone git@github.com:christoomey/vim-tmux-runner.git
-git clone git@github.com:tpope/vim-rails.git
-git clone git@github.com:dense-analysis/ale.git
-git clone git@github.com:tpope/vim-surround.git
 git clone git@github.com:junegunn/fzf.git
 git clone git@github.com:junegunn/fzf.vim.git
 ```
@@ -79,7 +74,6 @@ The vim configuration includes:
 - No backup/swap files
 - Custom key mappings
 - Integration with tmux
-- ALE linter configuration for Ruby (using standard)
 - FZF integration for fuzzy file finding (requires FZF executable to be installed via `brew install fzf` on macOS)
 
 ### Git Configuration (gitconfig and gitignore_global)
