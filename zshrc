@@ -135,3 +135,7 @@ ulimit -n 1024
 
 # Add PostgreSQL to PATH
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+# Fix for tmux-navigation
+if [[ $TERM == *"tmux"* ]]; then
+  infocmp tmux-256color > /dev/null 2>&1 && export TERM=tmux-256color
+fi
