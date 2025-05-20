@@ -2,6 +2,7 @@ set encoding=utf-8
 
 " Plugins
 packadd vim-sensible
+packadd vim-tmux-navigator
 
 " Basic settings
 let mapleader = " "

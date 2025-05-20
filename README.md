@@ -41,3 +41,17 @@ curl -O https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/
 
 - Space is configured as the leader key
 - Based on vim-sensible for good defaults
+
+## Tmux Usage
+
+- `Ctrl+s` is the prefix key
+- `Prefix + c`: Create new window
+- `Prefix + -`: Split horizontally
+- `Prefix + \`: Split vertically
+- `Ctrl+h/j/k/l`: Navigate panes
+- `Prefix + C-r`: Reload config
+- `Shift+Arrow`: Resize pane small
+- `Ctrl+Arrow`: Resize pane large
+- `Prefix + b`: Break pane
+- `Prefix + C-j`: Show session tree
+- `Prefix + z`: Toggle zoom/maximize pane
