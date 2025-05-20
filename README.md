@@ -27,6 +27,8 @@ git clone git@github.com:christoomey/vim-tmux-runner.git
 git clone git@github.com:tpope/vim-rails.git
 git clone git@github.com:dense-analysis/ale.git
 git clone git@github.com:tpope/vim-surround.git
+git clone git@github.com:junegunn/fzf.git
+git clone git@github.com:junegunn/fzf.vim.git
 ```
 
 ## Vim Color Scheme
@@ -41,6 +43,15 @@ curl -O https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/
 
 - Space is configured as the leader key
 - Based on vim-sensible for good defaults
+
+### FZF Integration
+
+The configuration includes fuzzy finding with FZF for efficient file navigation:
+
+- `Ctrl+p`: Open file finder (similar to CtrlP plugin)
+- `<leader>b`: Browse open buffers
+- `<leader>g`: Search git files (respects .gitignore)
+- `<leader>r`: Search file contents using ripgrep
 
 ## Tmux Usage
 

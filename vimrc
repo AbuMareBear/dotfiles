@@ -3,6 +3,8 @@ set encoding=utf-8
 " Plugins
 packadd vim-sensible
 packadd vim-tmux-navigator
+packadd fzf
+packadd fzf.vim
 
 " Basic settings
 let mapleader = " "
@@ -27,3 +29,9 @@ set background=dark
 syntax on
 
 colorscheme jellybeans
+
+" FZF key bindings
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>g :GFiles<CR>
+nnoremap <leader>r :Rg<CR>
