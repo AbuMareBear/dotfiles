@@ -21,6 +21,8 @@ set expandtab
 set textwidth=81
 set colorcolumn=+1
 
-" Basic color settings
+" Color settings
 set background=dark
 syntax on
+
+colorscheme jellybeans
