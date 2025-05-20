@@ -38,6 +38,7 @@ git clone git@github.com:tpope/vim-sensible.git
 git clone git@github.com:christoomey/vim-tmux-navigator.git
 git clone git@github.com:junegunn/fzf.git
 git clone git@github.com:junegunn/fzf.vim.git
+git clone git@github.com:dense-analysis/ale.git
 ```
 
 Vim colorscheme can be installed with:
@@ -75,6 +76,7 @@ The vim configuration includes:
 - Custom key mappings
 - Integration with tmux
 - FZF integration for fuzzy file finding (requires FZF executable to be installed via `brew install fzf` on macOS)
+- ALE for asynchronous linting and fixing
 
 ### Git Configuration (gitconfig and gitignore_global)
 

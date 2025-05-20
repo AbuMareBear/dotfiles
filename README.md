@@ -24,6 +24,7 @@ git clone git@github.com:tpope/vim-sensible.git
 git clone git@github.com:christoomey/vim-tmux-navigator.git
 git clone git@github.com:junegunn/fzf.git
 git clone git@github.com:junegunn/fzf.vim.git
+git clone git@github.com:dense-analysis/ale.git
 ```
 
 ## Vim Color Scheme
@@ -38,6 +39,7 @@ curl -O https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/
 
 - Space is configured as the leader key
 - Based on vim-sensible for good defaults
+- Includes ALE for asynchronous linting
 
 ### FZF Integration
 
@@ -67,6 +69,18 @@ The configuration includes fuzzy finding with FZF for efficient file navigation.
 - `<leader>b`: Browse open buffers
 - `<leader>g`: Search git files (respects .gitignore)
 - `<leader>r`: Search file contents using ripgrep
+
+### ALE Integration
+
+The configuration includes ALE (Asynchronous Lint Engine) for real-time linting:
+
+- Linting occurs on file save, not continuously
+- Trailing whitespace is automatically removed
+- Rubocop enabled for Ruby files
+- Prettier and ESLint for JavaScript/TypeScript files
+- Prettier for JSON and CSS
+- Signs in the gutter indicate errors and warnings
+- Error/warning messages show which linter reported them
 
 ## Tmux Usage
 
