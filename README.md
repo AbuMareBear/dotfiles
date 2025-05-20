@@ -55,3 +55,11 @@ curl -O https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/
 - `Prefix + b`: Break pane
 - `Prefix + C-j`: Show session tree
 - `Prefix + z`: Toggle zoom/maximize pane
+
+### Managing Tmux Sessions
+
+- Create a new session: `tmux new-session -s project_name -c /path/to/project`
+- Create a new session from within tmux: Same command as above
+- Switch to another session from within tmux: `tmux switch-client -t project_name`
+- List all sessions: `tmux list-sessions` or `tmux ls`
+- Attach to an existing session: `tmux attach -t project_name`
