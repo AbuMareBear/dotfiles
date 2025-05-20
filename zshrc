@@ -139,3 +139,6 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 if [[ $TERM == *"tmux"* ]]; then
   infocmp tmux-256color > /dev/null 2>&1 && export TERM=tmux-256color
 fi
+
+# Disable terminal bell
+set bell-style none
