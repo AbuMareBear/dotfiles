@@ -6,6 +6,7 @@ packadd vim-tmux-navigator
 packadd fzf
 packadd fzf.vim
 packadd ale
+packadd vim-slim
 
 " Add Homebrew-installed FZF to runtime path (macOS)
 set rtp+=/opt/homebrew/opt/fzf
