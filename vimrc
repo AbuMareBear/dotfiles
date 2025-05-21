@@ -90,3 +90,7 @@ nnoremap [h :GitGutterPrevHunk<CR>
 highlight GitGutterAdd    guifg=#00ff00 ctermfg=46
 highlight GitGutterChange guifg=#ffff00 ctermfg=226
 highlight GitGutterDelete guifg=#ff0000 ctermfg=196
+
+" Swap windows right/left with space+wr and space+wl
+nnoremap <leader>wr <C-w>r
+nnoremap <leader>wl <C-w>R
