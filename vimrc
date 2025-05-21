@@ -91,6 +91,29 @@ highlight GitGutterAdd    guifg=#00ff00 ctermfg=46
 highlight GitGutterChange guifg=#ffff00 ctermfg=226
 highlight GitGutterDelete guifg=#ff0000 ctermfg=196
 
+" Send text to Claude in tmux
+function! SendToTmuxClaude() range
+  let old_reg = getreg('"')
+  let old_regtype = getregtype('"')
+  
+  " Yank the selected text into the " register
+  normal! gvy
+  
+  " Get the text
+  let selected_text = getreg('"')
+  
+  " Send to tmux
+  call system("tmux send-keys -t '{left-of}' 'Claude: ```' Enter")
+  call system("tmux send-keys -t '{left-of}' " . shellescape(selected_text))
+  call system("tmux send-keys -t '{left-of}' Enter '```' Enter")
+  call system("tmux select-pane -L")
+  
+  " Restore the register
+  call setreg('"', old_reg, old_regtype)
+endfunction
+
+vnoremap <leader>c :call SendToTmuxClaude()<CR>
+
 " Swap windows right/left with space+wr and space+wl
 nnoremap <leader>wr <C-w>r
 nnoremap <leader>wl <C-w>R
