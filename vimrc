@@ -7,6 +7,7 @@ packadd fzf
 packadd fzf.vim
 packadd ale
 packadd vim-slim
+packadd vim-gitgutter
 
 " Add Homebrew-installed FZF to runtime path (macOS)
 set rtp+=/opt/homebrew/opt/fzf
@@ -73,3 +74,11 @@ nnoremap <leader>r :Rg<CR>
 
 " Quick project-wide search
 nnoremap <leader>s :grep -r "\<<cword>\>" .<CR>:copen<CR>
+
+" GitGutter configuration
+let g:gitgutter_map_keys = 0
+nnoremap <leader>hp :GitGutterPreviewHunk<CR>
+nnoremap <leader>hs :GitGutterStageHunk<CR>
+nnoremap <leader>hu :GitGutterUndoHunk<CR>
+nnoremap ]h :GitGutterNextHunk<CR>
+nnoremap [h :GitGutterPrevHunk<CR>
