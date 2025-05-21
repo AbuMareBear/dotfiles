@@ -76,9 +76,17 @@ nnoremap <leader>r :Rg<CR>
 nnoremap <leader>s :grep -r "\<<cword>\>" .<CR>:copen<CR>
 
 " GitGutter configuration
+set updatetime=100
+set signcolumn=yes
+
 let g:gitgutter_map_keys = 0
 nnoremap <leader>hp :GitGutterPreviewHunk<CR>
 nnoremap <leader>hs :GitGutterStageHunk<CR>
 nnoremap <leader>hu :GitGutterUndoHunk<CR>
 nnoremap ]h :GitGutterNextHunk<CR>
 nnoremap [h :GitGutterPrevHunk<CR>
+
+" GitGutter custom colors
+highlight GitGutterAdd    guifg=#00ff00 ctermfg=46
+highlight GitGutterChange guifg=#ffff00 ctermfg=226
+highlight GitGutterDelete guifg=#ff0000 ctermfg=196
