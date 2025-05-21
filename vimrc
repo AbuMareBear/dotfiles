@@ -70,3 +70,6 @@ nnoremap <C-p> :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>r :Rg<CR>
+
+" Quick project-wide search
+nnoremap <leader>s :grep -r "\<<cword>\>" .<CR>:copen<CR>
