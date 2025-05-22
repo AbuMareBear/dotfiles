@@ -53,7 +53,7 @@ The configuration includes fuzzy finding with FZF for efficient file navigation.
    ```bash
    # For macOS with Homebrew
    brew install fzf
-   
+
    # For Linux
    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
    ~/.fzf/install

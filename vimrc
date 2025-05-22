@@ -79,6 +79,10 @@ nnoremap <leader>s :grep -r "\<<cword>\>" .<CR>:copen<CR>
 set updatetime=100
 set signcolumn=yes
 
+" Auto-reload files when changed externally
+set autoread
+autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * checktime
+
 let g:gitgutter_map_keys = 0
 nnoremap <leader>hp :GitGutterPreviewHunk<CR>
 nnoremap <leader>hs :GitGutterStageHunk<CR>
