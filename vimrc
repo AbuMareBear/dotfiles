@@ -30,6 +30,9 @@ set expandtab
 set textwidth=81
 set colorcolumn=+1
 
+" Treat underscores as word separators
+set iskeyword-=_
+
 " Color settings
 set background=dark
 syntax on
@@ -65,6 +68,29 @@ let g:ale_fixers = {
   \ }
 
 let g:ale_fix_on_save = 1
+
+" Only run linters explicitly defined in ale_linters
+let g:ale_linters_explicit = 1
+
+" Use bundle exec when available
+let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ale_ruby_standardrb_executable = 'bundle'
+
+" Auto-detect Ruby linter based on project files
+function! DetectRubyLinter()
+  if filereadable('.standard.yml') || filereadable('.standardrb.yml')
+    let b:ale_linters = {'ruby': ['standardrb']}
+    let b:ale_fixers = {'ruby': ['standardrb']}
+  elseif filereadable('.rubocop.yml')
+    let b:ale_linters = {'ruby': ['rubocop']}
+    let b:ale_fixers = {'ruby': ['rubocop']}
+  endif
+endfunction
+
+autocmd BufRead,BufNewFile *.rb call DetectRubyLinter()
+autocmd BufRead,BufNewFile *.rake call DetectRubyLinter()
+autocmd BufRead,BufNewFile Gemfile call DetectRubyLinter()
+autocmd BufRead,BufNewFile Rakefile call DetectRubyLinter()
 
 " FZF key bindings
 nnoremap <C-p> :Files<CR>
