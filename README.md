@@ -13,7 +13,23 @@ ln -sf ~/code/personal/dotfiles/tmux.conf ~/.tmux.conf
 ln -sf ~/code/personal/dotfiles/vimrc ~/.vimrc
 ln -sf ~/code/personal/dotfiles/gitignore_global ~/.gitignore_global
 ln -sf ~/code/personal/dotfiles/gitconfig ~/.gitconfig
+ln -sf ~/code/personal/dotfiles/rspec_config.rb ~/.rspec_config.rb
 ```
+
+## RSpec Configuration
+
+The `rspec_config.rb` file provides custom RSpec configuration to:
+- Filter out verbose asdf and gem paths from backtraces
+- Ensure application code is always visible in errors
+
+## Shell Aliases
+
+Key aliases defined in zshrc:
+- `rs`: Run RSpec with clean output (filters asdf paths and favicon errors)
+- `rsu`: Run RSpec with clean output, excluding system specs
+- `rt`: Run Rails tests
+- `r`: Rails commands via bin/rails
+- `b`: Bundle commands via bin/bundle
 
 ## Vim Plugins
 
@@ -26,6 +42,7 @@ git clone git@github.com:junegunn/fzf.git
 git clone git@github.com:junegunn/fzf.vim.git
 git clone git@github.com:dense-analysis/ale.git
 git clone git@github.com:slim-template/vim-slim.git
+git clone git@github.com:airblade/vim-gitgutter.git
 ```
 
 ## Vim Color Scheme

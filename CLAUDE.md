@@ -11,6 +11,7 @@ This repository contains personal dotfiles for configuring various development t
 - Tmux
 - Git
 - Ruby gems
+- RSpec
 
 ## Installation
 
@@ -19,14 +20,13 @@ The dotfiles are installed by creating symbolic links from this repository to th
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-ln -s ~/code/dotfiles/zshrc ~/.zshrc
-ln -s ~/code/dotfiles/bash_prompt ~/.bash_prompt
-ln -s ~/code/dotfiles/bashrc ~/.bashrc
-ln -s ~/code/dotfiles/gemrc ~/.gemrc
-ln -s ~/code/dotfiles/tmux.conf ~/.tmux.conf
-ln -s ~/code/dotfiles/vimrc ~/.vimrc
-ln -s ~/code/dotfiles/gitignore_global ~/.gitignore_global
-ln -s ~/code/dotfiles/gitconfig ~/.gitconfig
+ln -s ~/code/personal/dotfiles/zshrc ~/.zshrc
+ln -s ~/code/personal/dotfiles/gemrc ~/.gemrc
+ln -s ~/code/personal/dotfiles/tmux.conf ~/.tmux.conf
+ln -s ~/code/personal/dotfiles/vimrc ~/.vimrc
+ln -s ~/code/personal/dotfiles/gitignore_global ~/.gitignore_global
+ln -s ~/code/personal/dotfiles/gitconfig ~/.gitconfig
+ln -s ~/code/personal/dotfiles/rspec_config.rb ~/.rspec_config.rb
 ```
 
 Vim plugins can be installed with:
@@ -56,10 +56,12 @@ curl -O https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/
 ### Shell Configuration (zshrc)
 
 Key aspects of the zshrc configuration:
-- Uses Oh-My-Zsh with the "fwalch" theme
+- Uses Oh-My-Zsh with the "robbyrussell" theme
 - Sets vim as the default editor
 - Contains aliases for Rails, npm, and git workflow
-- Configures environment for Python (pyenv), Node.js (nvm), and other development tools
+- Configures environment for Ruby (asdf), and other development tools
+- Custom RSpec wrapper functions for cleaner test output
+- Filters asdf paths and favicon errors from RSpec output
 
 ### Tmux Configuration (tmux.conf)
 
@@ -96,6 +98,14 @@ The gitignore_global excludes:
 - Compiled sources and packages
 - Logs and databases
 - npm lock files when using yarn
+
+### RSpec Configuration (rspec_config.rb)
+
+The rspec_config.rb file customizes RSpec behavior:
+- Filters all gem paths from backtraces for cleaner output
+- Specifically filters asdf installation paths
+- Ensures application code is always visible in backtraces
+- Works seamlessly with the shell aliases `rs` and `rsu`
 
 ## Common Tasks
 
