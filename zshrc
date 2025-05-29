@@ -144,6 +144,13 @@ fi
 # Disable terminal bell
 set bell-style none
 
+# Cursor configuration for better visibility
+# Set cursor to blinking block
+echo -ne '\e[1 q'
+
+# Set cursor color (bright white/cyan for visibility)
+echo -ne '\e]12;cyan\a'
+
 # Reduce Ruby warnings
 export RUBYOPT="-W0"
 
