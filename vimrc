@@ -89,6 +89,9 @@ autocmd BufRead,BufNewFile *.rake call DetectRubyLinter()
 autocmd BufRead,BufNewFile Gemfile call DetectRubyLinter()
 autocmd BufRead,BufNewFile Rakefile call DetectRubyLinter()
 
+" Also detect Ruby linter for files with Ruby shebang
+autocmd BufRead,BufNewFile * if getline(1) =~# '^#!.*ruby' | call DetectRubyLinter() | endif
+
 " FZF key bindings
 nnoremap <C-p> :Files<CR>
 nnoremap <leader>b :Buffers<CR>
