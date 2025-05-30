@@ -8,6 +8,7 @@ packadd fzf.vim
 packadd ale
 packadd vim-slim
 packadd vim-gitgutter
+packadd vim-rails
 
 " Add Homebrew-installed FZF to runtime path (macOS)
 set rtp+=/opt/homebrew/opt/fzf
