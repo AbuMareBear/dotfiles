@@ -116,7 +116,7 @@ alias n="npm run"
 alias p="npx prisma"
 alias kill3000="kill -9 $(lsof -i :3000 -t)"
 alias rs='rspec_clean'
-alias rsu='rspec_clean --exclude-pattern "spec/system/*_spec.rb"'
+alias rsu='bin/rspec --exclude-pattern "spec/system/*_spec.rb"'
 alias two="git checkout main && git pull && bundle && yarn && bin/rails dev:prime && bin/dev"
 alias forg="git checkout staging && git pull && npm i && n reset-dev && n dev"
 alias lus="git checkout staging && git pull && npm i && n reset-dev && n dev"
@@ -162,7 +162,7 @@ rspec_clean() {
   # Force color output from RSpec
   FORCE_COLOR=1 bin/rspec --color --tty "$@" 2>&1 | awk '
     /Got [0-9]+ failures? and [0-9]+ other errors?:/ { in_errors=1 }
-    /favicon\.ico/ && in_errors { 
+    /favicon\.ico/ && in_errors {
       skip=1
       next
     }
