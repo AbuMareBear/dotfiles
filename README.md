@@ -13,6 +13,7 @@ ln -sf ~/code/personal/dotfiles/tmux.conf ~/.tmux.conf
 ln -sf ~/code/personal/dotfiles/vimrc ~/.vimrc
 ln -sf ~/code/personal/dotfiles/gitignore_global ~/.gitignore_global
 ln -sf ~/code/personal/dotfiles/gitconfig ~/.gitconfig
+ln -sf ~/code/personal/dotfiles/claude_settings.json ~/.claude/settings.json
 ```
 
 ## Shell Aliases

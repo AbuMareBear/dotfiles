@@ -26,6 +26,7 @@ ln -s ~/code/personal/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/code/personal/dotfiles/vimrc ~/.vimrc
 ln -s ~/code/personal/dotfiles/gitignore_global ~/.gitignore_global
 ln -s ~/code/personal/dotfiles/gitconfig ~/.gitconfig
+ln -s ~/code/personal/dotfiles/claude_settings.json ~/.claude/settings.json
 ```
 
 Vim plugins can be installed with:
