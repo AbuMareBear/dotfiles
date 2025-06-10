@@ -23,6 +23,7 @@ development.local.rb
 # TWO
 Brewfile.lock.json
 /.docs
+/ai-docs
 CLAUDE.md
 /config/environments/custom.rb
 /bin/custom-dev
