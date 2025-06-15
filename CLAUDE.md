@@ -12,6 +12,7 @@ This repository contains personal dotfiles for configuring various development t
 - Git
 - Ruby gems
 - RSpec
+- Claude
 
 ## Installation
 
@@ -27,6 +28,8 @@ ln -s ~/code/personal/dotfiles/vimrc ~/.vimrc
 ln -s ~/code/personal/dotfiles/gitignore_global ~/.gitignore_global
 ln -s ~/code/personal/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/code/personal/dotfiles/claude_settings.json ~/.claude/settings.json
+mkdir -p ~/Library/Application\ Support/Claude
+ln -s ~/code/personal/dotfiles/claude_desktop_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 
 Vim plugins can be installed with:
