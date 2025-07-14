@@ -19,8 +19,6 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
 
-  "terminal.integrated.tabs.location": "left",
-
   "workbench.editor.closeEmptyGroups": false,
   "workbench.editor.showTabs": "multiple",
 
