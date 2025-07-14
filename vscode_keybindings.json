@@ -1,0 +1,19 @@
+[
+    {
+        "key": "ctrl+`",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "workbench.action.closePanel"
+    },
+    {
+        "key": "cmd+shift+t",
+        "command": "workbench.action.terminal.new"
+    },
+    {
+        "key": "ctrl+s s",
+        "command": "workbench.action.openRecent"
+    }
+]

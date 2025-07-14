@@ -14,6 +14,7 @@ This repository contains personal dotfiles for configuring various development t
 - RSpec
 - Claude
 - Cursor IDE
+- VS Code
 
 ## Installation
 
@@ -34,6 +35,8 @@ ln -s ~/code/personal/dotfiles/claude_desktop_config.json ~/Library/Application\
 mkdir -p ~/Library/Application\ Support/Cursor/User
 ln -s ~/code/personal/dotfiles/cursor_settings.json ~/Library/Application\ Support/Cursor/User/settings.json
 ln -s ~/code/personal/dotfiles/cursor_keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
+mkdir -p ~/Library/Application\ Support/Code/User
+ln -s ~/code/personal/dotfiles/vscode_keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 ```
 
 Vim plugins can be installed with:
@@ -119,6 +122,12 @@ The Cursor keybindings include:
 - `cmd+i` - Open Composer mode agent
 - `shift+enter` - Continue terminal command on new line
 - `ctrl+s s` - Open recent files
+
+### VS Code Configuration (vscode_keybindings.json)
+
+The VS Code keybindings include:
+- `ctrl+\`` - Focus next terminal when in terminal
+- `ctrl+\\` - Close panel
 
 ## Common Tasks
 
