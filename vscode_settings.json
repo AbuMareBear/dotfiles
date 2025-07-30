@@ -29,5 +29,11 @@
   },
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "[yaml]": {
+    "editor.formatOnSave": false
+  },
+  "[yml]": {
+    "editor.formatOnSave": false
   }
 }
