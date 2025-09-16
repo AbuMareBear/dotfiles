@@ -35,5 +35,14 @@
   },
   "[yml]": {
     "editor.formatOnSave": false
-  }
+  },
+  "editor.inlineSuggest.enabled": false,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "workbench.activityBar.location": "hidden",
+  "terminal.integrated.tabs.location": "left"
 }
