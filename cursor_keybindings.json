@@ -69,5 +69,10 @@
     {
         "key": "ctrl+s l",
         "command": "workbench.action.moveActiveEditorGroupRight"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "searchViewletFocus"
     }
 ]

@@ -54,5 +54,6 @@
   "diffEditor.renderSideBySide": false,
   "terminal.integrated.tabs.location": "left",
   "workbench.activityBar.orientation": "vertical",
-  "workbench.activityBar.location": "hidden"
+  "workbench.activityBar.location": "hidden",
+  "workbench.sideBar.location": "right"
 }
