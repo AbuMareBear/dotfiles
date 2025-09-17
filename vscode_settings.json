@@ -36,7 +36,7 @@
   "[yml]": {
     "editor.formatOnSave": false
   },
-  "editor.inlineSuggest.enabled": false,
+  "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
     "*": false,
     "plaintext": false,
@@ -44,5 +44,8 @@
     "scminput": false
   },
   "workbench.activityBar.location": "hidden",
-  "terminal.integrated.tabs.location": "left"
+  "terminal.integrated.tabs.location": "left",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

@@ -57,5 +57,10 @@
     {
         "key": "ctrl+s l",
         "command": "workbench.action.moveActiveEditorGroupRight"
+    },
+    {
+        "key": "alt+tab",
+        "command": "editor.action.inlineSuggest.commit",
+        "when": "inlineSuggestionVisible && !editorReadonly"
     }
 ]
