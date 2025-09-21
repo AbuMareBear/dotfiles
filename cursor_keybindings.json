@@ -74,5 +74,9 @@
         "key": "ctrl+h",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "searchViewletFocus"
+    },
+    {
+        "key": "ctrl+s f",
+        "command": "workbench.files.action.showActiveFileInExplorer"
     }
 ]
