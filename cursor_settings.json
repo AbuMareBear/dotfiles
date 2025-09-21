@@ -15,6 +15,7 @@
 
   "extensions.ignoreRecommendations": true,
 
+  "files.autoSave": "onFocusChange",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
