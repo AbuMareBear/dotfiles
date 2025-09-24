@@ -58,5 +58,13 @@
   "workbench.activityBar.orientation": "vertical",
   "workbench.activityBar.location": "hidden",
   "workbench.sideBar.location": "right",
-  "explorer.autoReveal": false
+  "explorer.autoReveal": false,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[erb]": {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    "editor.formatOnSave": true
+  }
 }
