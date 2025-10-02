@@ -16,6 +16,9 @@
 
   "extensions.ignoreRecommendations": true,
 
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   "files.autoSave": "onFocusChange",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -65,6 +68,11 @@
 
   "[erb]": {
     "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    "editor.formatOnSave": true
+  },
+
+  "[slim]": {
+    "editor.defaultFormatter": "sianglim.slim",
     "editor.formatOnSave": true
   }
 }
