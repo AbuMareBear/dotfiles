@@ -120,6 +120,7 @@ alias rsu='bin/rspec --exclude-pattern "spec/system/*_spec.rb"'
 alias two="git checkout main && git pull && bundle && yarn && bin/rails dev:prime && bin/dev"
 alias forg="git checkout staging && git pull && npm i && n reset-dev && n dev"
 alias lus="git checkout staging && git pull && npm i && n reset-dev && n dev"
+alias mm="gc staging && gpo staging && gc main && git merge staging --ff-only"
 
 export DISABLE_SPRING=true
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
