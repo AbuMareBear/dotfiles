@@ -7,6 +7,7 @@
     "source.removeUnusedImports": "always",
     "source.addMissingImports": "never"
   },
+  "editor.colorDecorators": false,
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
