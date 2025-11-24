@@ -7,8 +7,9 @@
 [alias]
 	sla = log --oneline --decorate --graph --all
 	glog = log -E -i --grep
-  wip = commit -m "wip"
+  wip = "!git commit -m 'wip [ci skip]'"
   fb = commit -m "feedback"
+  pf = push --force-with-lease
 [init]
 	defaultBranch = main
 [pager]

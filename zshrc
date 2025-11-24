@@ -109,6 +109,7 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias g="git"
 alias r="bin/rails"
 alias b="bin/bundle"
 alias rt="bin/rails test"
@@ -120,10 +121,21 @@ alias rsu='bin/rspec --exclude-pattern "spec/system/*_spec.rb"'
 alias two="git checkout main && git pull && bundle && yarn && bin/rails dev:prime && bin/dev"
 alias forg="git checkout staging && git pull && npm i && n reset-dev && n dev"
 alias lus="git checkout staging && git pull && npm i && n reset-dev && n dev"
-alias forge-promote="git checkout staging && git push origin staging && git checkout main && git merge staging --ff-only"
+alias forge-promote="git checkout staging && git push origin staging && git checkout main && git merge staging --ff-only && git push origin main"
+
+# Git safety function - prevents force push without --force-with-lease
+git() {
+    # Check for -f or --force (but not --force-with-lease)
+    if [[ "$*" == *"push"* ]] && [[ "$*" =~ (^| )(-f|--force)($| ) ]] && [[ ! "$*" =~ "--force-with-lease" ]]; then
+        echo "❌ Error: 'git push -f' is disabled. Use 'git push --force-with-lease' instead."
+        return 1
+    fi
+    command git "$@"
+}
 
 export DISABLE_SPRING=true
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export DISABLE_AUTOUPDATER=1
 
 # Add npm global bin to PATH
 export PATH=~/.npm-global/bin:$PATH

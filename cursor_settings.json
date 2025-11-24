@@ -75,5 +75,6 @@
   "[slim]": {
     "editor.defaultFormatter": "sianglim.slim",
     "editor.formatOnSave": true
-  }
+  },
+  "window.commandCenter": true
 }
