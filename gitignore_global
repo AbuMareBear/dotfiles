@@ -10,9 +10,11 @@
 
 # Claude
 .claude/
+.claude
 
 # Notes is to record ideas without
 notes.txt
+.notes.txt
 
 # asdf
 .tool-versions
@@ -71,3 +73,7 @@ package-lock.json
 
 .ruby-gemset
 .byebug_history
+
+# Local SSL certs
+www.teamworkonline.com-key.pem
+www.teamworkonline.com.pem
