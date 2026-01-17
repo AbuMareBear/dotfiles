@@ -60,7 +60,6 @@
   "diffEditor.renderSideBySide": false,
   "terminal.integrated.tabs.location": "left",
   "workbench.activityBar.orientation": "vertical",
-  "workbench.activityBar.location": "hidden",
   "workbench.sideBar.location": "right",
   "explorer.autoReveal": false,
   "[typescriptreact]": {
@@ -76,5 +75,37 @@
     "editor.defaultFormatter": "sianglim.slim",
     "editor.formatOnSave": true
   },
-  "window.commandCenter": true
+  "window.commandCenter": true,
+  "claudeCode.preferredLocation": "panel",
+  "accessibility.signals.chatEditModifiedFile": {
+    "sound": "off"
+  },
+  "editor.accessibilitySupport": "off",
+  "accessibility.signalOptions.volume": 0,
+  "accessibility.signals.chatRequestSent": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.chatResponseReceived": {
+    "sound": "off"
+  },
+  "accessibility.signals.clear": {
+    "announcement": "off",
+    "sound": "off"
+  },
+  "accessibility.signals.codeActionApplied": {
+    "sound": "off"
+  },
+  "accessibility.signals.codeActionTriggered": {
+    "sound": "off"
+  },
+  "accessibility.signals.diffLineDeleted": {
+    "sound": "off"
+  },
+  "accessibility.signals.diffLineInserted": {
+    "sound": "off"
+  },
+
+  "panel.defaultLocation": "left",
+  "cursor.chat.showOnStartup": false
 }
