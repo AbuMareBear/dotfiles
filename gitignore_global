@@ -11,6 +11,7 @@
 # Claude
 .claude/
 .claude
+.claude/skills/work/
 
 # Notes is to record ideas without
 notes.txt
