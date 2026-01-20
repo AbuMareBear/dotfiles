@@ -1,7 +1,7 @@
 {
+  "workbench.colorTheme": "Solarized Light",
   "cursor.chat.terminalShowHoverHint": false,
   "cursor.terminal.usePreviewBox": true,
-
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always",
     "source.removeUnusedImports": "always",
@@ -12,11 +12,12 @@
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.lineNumbers": "relative",
-  "editor.rulers": [80, 120],
+  "editor.rulers": [
+    80,
+    120
+  ],
   "editor.tabSize": 2,
-
   "extensions.ignoreRecommendations": true,
-
   "files.associations": {
     "*.css": "tailwindcss"
   },
@@ -24,33 +25,30 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-
   "workbench.editor.closeEmptyGroups": false,
   "workbench.editor.showTabs": "multiple",
-
   "workbench.colorCustomizations": {
     "editorCodeLens.foreground": "#333333",
-    "editorIndentGuide.activeBackground1": "#aaaaaa"
+    "editorIndentGuide.activeBackground1": "#aaaaaa",
+    "activityBar.background": "#002b36",
+    "activityBar.foreground": "#93a1a1",
+    "activityBar.inactiveForeground": "#586e75",
+    "activityBar.activeBorder": "#268bd2"
   },
-
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
   },
-
   "rubyLsp.enabledFeatures": {
     "inlayHint": false
   },
   "cursor.cpp.enablePartialAccepts": true,
   "editor.inlineSuggest.enabled": true,
-
   "[yaml]": {
     "editor.formatOnSave": false
   },
@@ -65,12 +63,10 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
   "[erb]": {
     "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
     "editor.formatOnSave": true
   },
-
   "[slim]": {
     "editor.defaultFormatter": "sianglim.slim",
     "editor.formatOnSave": true
@@ -105,7 +101,6 @@
   "accessibility.signals.diffLineInserted": {
     "sound": "off"
   },
-
   "panel.defaultLocation": "left",
   "cursor.chat.showOnStartup": false
 }
