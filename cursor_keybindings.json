@@ -78,5 +78,25 @@
     {
         "key": "ctrl+s f",
         "command": "workbench.files.action.showActiveFileInExplorer"
+    },
+    {
+        "key": "ctrl+s d",
+        "command": "branchDiff.startReview"
+    },
+    {
+        "key": "ctrl+s ]",
+        "command": "branchDiff.next"
+    },
+    {
+        "key": "ctrl+s [",
+        "command": "branchDiff.previous"
+    },
+    {
+        "key": "ctrl+s r",
+        "command": "branchDiff.reviewAndNext"
+    },
+    {
+        "key": "ctrl+s shift+d",
+        "command": "branchDiff.showSummary"
     }
 ]

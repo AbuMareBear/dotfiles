@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Solarized Light",
+  "workbench.colorTheme": "Gruvbox Dark Soft",
   "cursor.chat.terminalShowHoverHint": false,
   "cursor.terminal.usePreviewBox": true,
   "editor.codeActionsOnSave": {
@@ -27,14 +27,7 @@
   "files.trimTrailingWhitespace": true,
   "workbench.editor.closeEmptyGroups": false,
   "workbench.editor.showTabs": "multiple",
-  "workbench.colorCustomizations": {
-    "editorCodeLens.foreground": "#333333",
-    "editorIndentGuide.activeBackground1": "#aaaaaa",
-    "activityBar.background": "#002b36",
-    "activityBar.foreground": "#93a1a1",
-    "activityBar.inactiveForeground": "#586e75",
-    "activityBar.activeBorder": "#268bd2"
-  },
+  "workbench.colorCustomizations": {},
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -55,7 +48,7 @@
   "[yml]": {
     "editor.formatOnSave": false
   },
-  "diffEditor.renderSideBySide": false,
+  "diffEditor.renderSideBySide": true,
   "terminal.integrated.tabs.location": "left",
   "workbench.activityBar.orientation": "vertical",
   "workbench.sideBar.location": "right",
@@ -140,5 +133,6 @@
       "name": "Vue Green",
       "value": "#42b883"
     }
-  ]
+  ],
+  "gitlens.graph.layout": "editor"
 }
