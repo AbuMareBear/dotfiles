@@ -8,7 +8,7 @@
     "allow": [
       "Bash(gh issue view*)",
       "Bash(bin/rails runner*)",
-      "Bash(bundle exec erb_lint*)"
+      "Bash(bin/erblint*)"
     ]
   },
   "feedbackSurveyState": {
