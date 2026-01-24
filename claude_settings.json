@@ -4,6 +4,11 @@
   "env": {},
   "includeCoAuthoredBy": false,
   "alwaysThinkingEnabled": false,
+  "permissions": {
+    "allow": [
+      "Bash(gh issue view*)"
+    ]
+  },
   "feedbackSurveyState": {
     "lastShownTime": 1754079977874
   }

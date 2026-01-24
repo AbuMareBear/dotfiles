@@ -96,6 +96,7 @@
   },
   "workbench.panel.defaultLocation": "left",
   "cursor.chat.showOnStartup": false,
+  "workbench.auxiliaryBar.visible": false,
   "peacock.favoriteColors": [
     {
       "name": "Angular Red",
