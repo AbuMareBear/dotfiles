@@ -30,6 +30,23 @@ Key aliases defined in zshrc:
 - `r`: Rails commands via bin/rails
 - `b`: Bundle commands via bin/bundle
 
+## Project Name Aliases
+
+The prompt shows the project name instead of the current directory, which is useful when working in git worktrees where the directory name often matches the branch name.
+
+To create short aliases for project names (without committing them to this public repo), create `~/.project_aliases`:
+
+```bash
+# ~/.project_aliases
+typeset -A PROJECT_ALIASES
+PROJECT_ALIASES=(
+  "my-long-project-name" "short"
+  "another-project" "proj"
+)
+```
+
+This file is sourced automatically if it exists. Your prompt will then show the alias instead of the full project name.
+
 ## Vim Plugins
 
 ```bash

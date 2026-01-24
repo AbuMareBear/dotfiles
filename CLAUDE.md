@@ -67,10 +67,11 @@ curl -O https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/
 ### Shell Configuration (zshrc)
 
 Key aspects of the zshrc configuration:
-- Uses Oh-My-Zsh with the "robbyrussell" theme
+- Uses Oh-My-Zsh with the "robbyrussell" theme (customized to show project name instead of directory)
 - Sets vim as the default editor
 - Contains aliases for Rails, npm, and git workflow
 - Configures environment for Ruby (asdf), and other development tools
+- Supports private project name aliases via `~/.project_aliases` (not committed to this repo)
 
 ### Tmux Configuration (tmux.conf)
 

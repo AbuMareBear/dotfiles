@@ -74,6 +74,42 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# Load private project aliases if they exist
+[[ -f ~/.project_aliases ]] && source ~/.project_aliases
+
+# Function to get project name (handles worktrees)
+get_project_name() {
+  local project_name
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    local git_common_dir=$(git rev-parse --git-common-dir 2>/dev/null)
+
+    if [[ "$git_common_dir" == *"/.bare" ]]; then
+      # Bare repo worktree setup - get parent directory name
+      project_name=$(basename "${git_common_dir%/.bare}")
+    elif [[ "$git_common_dir" == *"/worktrees/"* ]]; then
+      # Standard git worktree - get main repo name
+      local main_repo_git="${git_common_dir%/worktrees/*}"
+      project_name=$(basename "${main_repo_git%/.git}")
+    else
+      # Regular repo
+      project_name=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)")
+    fi
+  else
+    project_name=$(basename "$PWD")
+  fi
+
+  # Apply alias if one exists
+  if [[ -n "${PROJECT_ALIASES[$project_name]}" ]]; then
+    echo "${PROJECT_ALIASES[$project_name]}"
+  else
+    echo "$project_name"
+  fi
+}
+
+# Override robbyrussell prompt to use project name instead of directory
+PROMPT='%(?:%{%F{green}%}➜ :%{%F{red}%}➜ ) '
+PROMPT+='%{%F{cyan}%}$(get_project_name)%{%f%} $(git_prompt_info)'
+
 # ASDF setup - load after Oh My Zsh
 . "$HOME/.asdf/asdf.sh"
 
