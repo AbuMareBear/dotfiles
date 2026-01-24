@@ -94,7 +94,7 @@
   "accessibility.signals.diffLineInserted": {
     "sound": "off"
   },
-  "panel.defaultLocation": "left",
+  "workbench.panel.defaultLocation": "left",
   "cursor.chat.showOnStartup": false,
   "peacock.favoriteColors": [
     {
