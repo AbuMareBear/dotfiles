@@ -6,7 +6,8 @@
   "alwaysThinkingEnabled": false,
   "permissions": {
     "allow": [
-      "Bash(gh issue view*)"
+      "Bash(gh issue view*)",
+      "Bash(bin/rails runner*)"
     ]
   },
   "feedbackSurveyState": {
