@@ -93,10 +93,14 @@ autocmd BufRead,BufNewFile Rakefile call DetectRubyLinter()
 " Also detect Ruby linter for files with Ruby shebang
 autocmd BufRead,BufNewFile * if getline(1) =~# '^#!.*ruby' | call DetectRubyLinter() | endif
 
+" FZF configuration - use bottom split instead of popup
+let g:fzf_layout = { 'down': '40%' }
+
 " FZF key bindings
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <leader>f :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>g :GFiles<CR>
+nnoremap <leader>g :Files<CR>
 nnoremap <leader>r :Rg<CR>
 
 " Quick project-wide search

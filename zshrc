@@ -200,5 +200,8 @@ echo -ne '\e[1 q'
 # Set cursor color (bright white/cyan for visibility)
 echo -ne '\e]12;cyan\a'
 
+# FZF - use ripgrep to respect .gitignore
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+
 # Reduce Ruby warnings
 export RUBYOPT="-W0"
