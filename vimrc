@@ -201,6 +201,7 @@ augroup GitBlame
   autocmd!
   autocmd CursorMoved * call GitBlameClear()
   autocmd CursorHold * call GitBlameShow()
+  autocmd InsertEnter * call GitBlameClear()
 augroup END
 
 nnoremap <leader>bl :call GitBlameToggle()<CR>
