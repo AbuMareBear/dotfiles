@@ -28,7 +28,7 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
-set textwidth=81
+set textwidth=80
 set colorcolumn=+1
 
 " Color settings
@@ -53,14 +53,18 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
   \ 'ruby': ['rubocop'],
   \ 'javascript': ['eslint'],
+  \ 'javascriptreact': ['eslint'],
   \ 'typescript': ['eslint'],
+  \ 'typescriptreact': ['eslint'],
   \ }
 
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \ 'ruby': ['rubocop'],
   \ 'javascript': ['prettier', 'eslint'],
+  \ 'javascriptreact': ['prettier', 'eslint'],
   \ 'typescript': ['prettier', 'eslint'],
+  \ 'typescriptreact': ['prettier', 'eslint'],
   \ 'json': ['prettier'],
   \ 'css': ['prettier'],
   \ }
