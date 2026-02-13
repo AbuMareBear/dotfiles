@@ -1,4 +1,5 @@
 set encoding=utf-8
+set regexpengine=1
 
 " Plugins
 packadd vim-sensible
