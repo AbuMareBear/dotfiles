@@ -73,12 +73,10 @@ let g:ale_fixers = {
 
 let g:ale_fix_on_save = 1
 
-" Organize imports on save for TS/TSX via tsserver
-autocmd BufWritePre *.ts,*.tsx ALEOrganizeImports
-
-" Code actions and auto-import via tsserver
+" Code actions and imports via tsserver
 nnoremap <leader>. :ALECodeAction<CR>
 nnoremap <leader>i :ALEImport<CR>
+nnoremap <leader>oi :ALEOrganizeImports<CR>
 
 " Only run linters explicitly defined in ale_linters
 let g:ale_linters_explicit = 1
