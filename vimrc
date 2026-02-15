@@ -1,6 +1,4 @@
 set encoding=utf-8
-set regexpengine=1
-set redrawtime=10000
 
 " Plugins
 packadd vim-sensible
@@ -11,6 +9,8 @@ packadd ale
 packadd vim-slim
 packadd vim-gitgutter
 packadd vim-rails
+packadd typescript-vim
+packadd vim-jsx-pretty
 
 " Add Homebrew-installed FZF to runtime path (macOS)
 set rtp+=/opt/homebrew/opt/fzf
