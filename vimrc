@@ -56,8 +56,8 @@ let g:ale_linters = {
   \ 'ruby': ['rubocop'],
   \ 'javascript': ['eslint'],
   \ 'javascriptreact': ['eslint'],
-  \ 'typescript': ['eslint'],
-  \ 'typescriptreact': ['eslint'],
+  \ 'typescript': ['tsserver', 'eslint'],
+  \ 'typescriptreact': ['tsserver', 'eslint'],
   \ }
 
 let g:ale_fixers = {
@@ -72,6 +72,13 @@ let g:ale_fixers = {
   \ }
 
 let g:ale_fix_on_save = 1
+
+" Organize imports on save for TS/TSX via tsserver
+autocmd BufWritePre *.ts,*.tsx ALEOrganizeImports
+
+" Code actions and auto-import via tsserver
+nnoremap <leader>. :ALECodeAction<CR>
+nnoremap <leader>i :ALEImport<CR>
 
 " Only run linters explicitly defined in ale_linters
 let g:ale_linters_explicit = 1
