@@ -30,6 +30,8 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
+set clipboard=unnamed
+
 set textwidth=80
 set colorcolumn=+1
 
