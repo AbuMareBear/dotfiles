@@ -80,6 +80,12 @@ nnoremap <leader>. :ALECodeAction<CR>
 nnoremap <leader>i :ALEImport<CR>
 nnoremap <leader>oi :ALEOrganizeImports<CR>
 
+" Keep JSX closing bracket on same line as last attribute (match Cursor/Prettier default)
+let g:ale_javascript_prettier_options = '--bracket-same-line'
+let g:ale_typescriptreact_prettier_options = '--bracket-same-line'
+let g:ale_javascriptreact_prettier_options = '--bracket-same-line'
+let g:ale_typescript_prettier_options = '--bracket-same-line'
+
 " Only run linters explicitly defined in ale_linters
 let g:ale_linters_explicit = 1
 
