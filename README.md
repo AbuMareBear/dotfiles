@@ -16,9 +16,6 @@ ln -sf ~/code/personal/dotfiles/gitconfig ~/.gitconfig
 ln -sf ~/code/personal/dotfiles/claude_settings.json ~/.claude/settings.json
 mkdir -p ~/Library/Application\ Support/Claude
 ln -sf ~/code/personal/dotfiles/claude_desktop_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
-mkdir -p ~/Library/Application\ Support/Cursor/User
-ln -sf ~/code/personal/dotfiles/cursor_settings.json ~/Library/Application\ Support/Cursor/User/settings.json
-ln -sf ~/code/personal/dotfiles/cursor_keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
 ```
 
 ## Shell Aliases

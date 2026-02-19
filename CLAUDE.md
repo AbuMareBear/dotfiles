@@ -13,7 +13,6 @@ This repository contains personal dotfiles for configuring various development t
 - Ruby gems
 - RSpec
 - Claude
-- Cursor IDE
 - VS Code
 
 ## Installation
@@ -32,9 +31,6 @@ ln -s ~/code/personal/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/code/personal/dotfiles/claude_settings.json ~/.claude/settings.json
 mkdir -p ~/Library/Application\ Support/Claude
 ln -s ~/code/personal/dotfiles/claude_desktop_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
-mkdir -p ~/Library/Application\ Support/Cursor/User
-ln -s ~/code/personal/dotfiles/cursor_settings.json ~/Library/Application\ Support/Cursor/User/settings.json
-ln -s ~/code/personal/dotfiles/cursor_keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
 mkdir -p ~/Library/Application\ Support/Code/User
 ln -s ~/code/personal/dotfiles/vscode_settings.json ~/Library/Application\ Support/Code/User/settings.json
 ln -s ~/code/personal/dotfiles/vscode_keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
@@ -108,22 +104,6 @@ The gitignore_global excludes:
 - Compiled sources and packages
 - Logs and databases
 - npm lock files when using yarn
-
-### Cursor Configuration (cursor_settings.json and cursor_keybindings.json)
-
-The Cursor settings include:
-- Auto-organize imports and remove unused imports on save
-- Format on save with Prettier for JS/TS files
-- Tab size of 2 spaces
-- Editor rulers at 80 and 120 characters
-- Custom color theme adjustments
-- Ruby LSP configuration with inlay hints disabled
-- Disabled formatting for YAML files
-
-The Cursor keybindings include:
-- `cmd+i` - Open Composer mode agent
-- `shift+enter` - Continue terminal command on new line
-- `ctrl+s s` - Open recent files
 
 ### VS Code Configuration (vscode_settings.json and vscode_keybindings.json)
 
