@@ -56,6 +56,7 @@ git clone git@github.com:junegunn/fzf.vim.git
 git clone git@github.com:dense-analysis/ale.git
 git clone git@github.com:slim-template/vim-slim.git
 git clone git@github.com:airblade/vim-gitgutter.git
+git clone git@github.com:pantharshit00/vim-prisma.git
 ```
 
 ## Vim Color Scheme
