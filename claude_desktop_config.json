@@ -8,5 +8,12 @@
         "/Users/abdullahhashim"
       ]
     }
+  },
+  "preferences": {
+    "sidebarMode": "task",
+    "coworkScheduledTasksEnabled": false,
+    "localAgentModeTrustedFolders": [
+      "/Users/abdullahhashim/Documents/Catberry"
+    ]
   }
 }
