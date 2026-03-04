@@ -7,9 +7,9 @@
 [alias]
 	sla = log --oneline --decorate --graph --all
 	glog = log -E -i --grep
-  skip = "!git commit -m 'wip [ci skip]'"
-  wip = "!git commit -m 'wip'"
-  wipsv  = "!git commit -m 'wip [ci skip] [vercel skip]'"
+  skip = "!git add . && git commit -m 'wip [ci skip]'"
+  wip = "!git add . && git commit -m 'wip'"
+  wipsv  = "!git add . && git commit -m 'wip [ci skip] [vercel skip]'"
   fb = commit -m "feedback"
   pf = push --force-with-lease
 [init]
