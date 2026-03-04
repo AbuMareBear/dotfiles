@@ -12,7 +12,7 @@
   wipsv  = "!git add . && git commit -m 'wip [ci skip] [vercel skip]'"
   fb = commit -m "feedback"
   pf = push --force-with-lease
-  dfo = diff main --name-only
+  dfo = !git --no-pager diff main --name-only
 [init]
 	defaultBranch = main
 [pager]
