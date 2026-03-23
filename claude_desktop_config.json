@@ -10,10 +10,12 @@
     }
   },
   "preferences": {
-    "sidebarMode": "task",
-    "coworkScheduledTasksEnabled": false,
     "localAgentModeTrustedFolders": [
       "/Users/abdullahhashim/Documents/Catberry"
-    ]
+    ],
+    "coworkScheduledTasksEnabled": true,
+    "ccdScheduledTasksEnabled": true,
+    "sidebarMode": "task",
+    "coworkWebSearchEnabled": true
   }
 }
