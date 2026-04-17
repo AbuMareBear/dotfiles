@@ -1,24 +1,17 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "cleanupPeriodDays": 30,
-  "env": {},
-  "includeCoAuthoredBy": false,
-  "alwaysThinkingEnabled": false,
   "permissions": {
     "allow": [
-      "Bash(gh issue view*)",
-      "Bash(gh pr view*)",
-      "Bash(bin/rails runner*)",
-      "Bash(RAILS_ENV=test bin/rails runner*)",
-      "Bash(RAILS_ENV=test bin/rails db:reset*)",
-      "Bash(bin/erblint*)",
-      "Bash(bundle exec erb_lint*)",
-      "Bash(bin/lint*)",
-      "Bash(bundle exec rubocop*)",
-      "Bash(bin/prime*)"
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(locate:*)"
     ]
   },
-  "feedbackSurveyState": {
-    "lastShownTime": 1754079977874
-  }
+  "enabledPlugins": {
+    "ruby-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "effortLevel": "high"
 }
