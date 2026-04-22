@@ -28,6 +28,7 @@ ln -s ~/code/personal/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/code/personal/dotfiles/vimrc ~/.vimrc
 ln -s ~/code/personal/dotfiles/gitignore_global ~/.gitignore_global
 ln -s ~/code/personal/dotfiles/gitconfig ~/.gitconfig
+ln -s ~/code/personal/dotfiles/tool-versions ~/.tool-versions
 ln -s ~/code/personal/dotfiles/claude_settings.json ~/.claude/settings.json
 mkdir -p ~/Library/Application\ Support/Claude
 ln -s ~/code/personal/dotfiles/claude_desktop_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
