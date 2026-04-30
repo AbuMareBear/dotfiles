@@ -23,6 +23,9 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Cap viminfo size to prevent huge registers from bloating ~/.viminfo
+set viminfo='100,<50,s10,h
+
 set number
 set numberwidth=5
 
