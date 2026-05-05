@@ -13,5 +13,17 @@
     "ruby-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat ~/.cache/claude-vim-buffers.txt 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  },
   "effortLevel": "high"
 }

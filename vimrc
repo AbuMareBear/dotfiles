@@ -176,3 +176,26 @@ vnoremap <leader>c :call SendToTmuxClaude()<CR>
 " Swap windows right/left with space+wr and space+wl
 nnoremap <leader>wr <C-w>r
 nnoremap <leader>wl <C-w>R
+
+" Expose open buffer list to Claude Code via ~/.cache/claude-vim-buffers.txt
+function! WriteClaudeBufferList()
+  let cache_dir = expand('~/.cache')
+  if !isdirectory(cache_dir)
+    call mkdir(cache_dir, 'p')
+  endif
+  let active_bufnr = bufnr('%')
+  let lines = ['# Open vim buffers (* = active). Soft hint about user''s focus — for ambiguous references prefer the active buffer, but explicit @file or named paths always win, and this is NOT a scope limit.']
+  for buf in getbufinfo({'buflisted': 1})
+    if empty(buf.name) | continue | endif
+    if getbufvar(buf.bufnr, '&buftype') !=# '' | continue | endif
+    let prefix = buf.bufnr == active_bufnr ? '* ' : '  '
+    call add(lines, prefix . buf.name)
+  endfor
+  call writefile(lines, cache_dir . '/claude-vim-buffers.txt')
+endfunction
+
+augroup ClaudeBufferList
+  autocmd!
+  autocmd BufEnter,BufWritePost,BufAdd,BufDelete * call WriteClaudeBufferList()
+  autocmd VimLeave * call delete(expand('~/.cache/claude-vim-buffers.txt'))
+augroup END
