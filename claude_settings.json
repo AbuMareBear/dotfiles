@@ -12,6 +12,7 @@
       "Bash(bin/normalize-i18n:*)",
       "Bash(bin/rubocop:*)",
       "Bash(bin/lint:*)",
+      "Bash(gem contents:*)",
       "Bash(tmux display-message:*)",
       "Read(//Users/abdullahhashim/.claude/**)",
       "Read(.claude/**)"
