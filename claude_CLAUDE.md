@@ -7,3 +7,7 @@ The user often dictates prompts via voice input, so transcription errors are pos
 ## Shell tooling
 
 Prefer `grep` (or `rg`) over `awk` for line-matching tasks. Reach for `awk` only when you actually need field-aware logic — `$N` references, `BEGIN`/`END` blocks, or arithmetic on fields. A pattern-only awk one-liner (no action block) is almost always just `grep -E '<pattern>'`.
+
+## Git
+
+Don't prefix git commands with `-C <path>` (or `cd <path> &&`) when already in that directory — the bare form (`git status`, `git diff`) matches common allow-list patterns; the prefixed form usually doesn't and forces a permission prompt.
