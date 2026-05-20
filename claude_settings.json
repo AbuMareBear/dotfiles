@@ -10,7 +10,8 @@
       "Bash(locate:*)",
       "Bash(sed -n:*)",
       "Bash(bin/normalize-i18n:*)",
-      "Bash(bin/rubocop:*)"
+      "Bash(bin/rubocop:*)",
+      "Bash(bin/lint:*)"
     ]
   },
   "enabledPlugins": {
