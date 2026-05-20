@@ -35,6 +35,8 @@ ln -s ~/code/personal/dotfiles/claude_desktop_config.json ~/Library/Application\
 mkdir -p ~/Library/Application\ Support/Code/User
 ln -s ~/code/personal/dotfiles/vscode_settings.json ~/Library/Application\ Support/Code/User/settings.json
 ln -s ~/code/personal/dotfiles/vscode_keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+mkdir -p ~/.config/ghostty
+ln -s ~/code/personal/dotfiles/ghostty_config ~/.config/ghostty/config
 ```
 
 Vim plugins can be installed with:

@@ -18,6 +18,8 @@ ln -sf ~/code/personal/dotfiles/claude_settings.json ~/.claude/settings.json
 ln -sf ~/code/personal/dotfiles/claude_CLAUDE.md ~/.claude/CLAUDE.md
 mkdir -p ~/Library/Application\ Support/Claude
 ln -sf ~/code/personal/dotfiles/claude_desktop_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
+mkdir -p ~/.config/ghostty
+ln -sf ~/code/personal/dotfiles/ghostty_config ~/.config/ghostty/config
 ```
 
 ## Shell Aliases
