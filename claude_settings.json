@@ -5,6 +5,7 @@
       "Bash(grep:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
+      "Bash(git log:*)",
       "Bash(git push:*)",
       "Bash(locate:*)"
     ]
