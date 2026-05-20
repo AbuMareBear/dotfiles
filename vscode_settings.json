@@ -50,5 +50,6 @@
   },
   "workbench.sideBar.location": "right",
 
-  "panel.defaultLocation": "left"
+  "panel.defaultLocation": "left",
+  "chat.disableAIFeatures": true
 }
