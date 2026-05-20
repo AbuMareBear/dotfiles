@@ -10,6 +10,8 @@
       "Bash(locate:*)",
       "Bash(sed -n:*)",
       "Bash(bin/normalize-i18n:*)",
+      "Bash(bundle exec i18n-tasks check-normalized)",
+      "Bash(bundle exec i18n-tasks unused)",
       "Bash(bin/rubocop:*)",
       "Bash(bin/lint:*)",
       "Bash(bin/rails db:rollback:*)",
