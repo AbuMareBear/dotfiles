@@ -177,7 +177,19 @@ vnoremap <leader>c :call SendToTmuxClaude()<CR>
 nnoremap <leader>wr <C-w>r
 nnoremap <leader>wl <C-w>R
 
-" Expose open buffer list to Claude Code via ~/.cache/claude-vim-buffers.txt
+" Expose open buffer list to Claude Code via ~/.cache/claude-vim-buffers-<session>.txt
+" Keyed by tmux session so switching sessions doesn't show stale buffers from another vim.
+function! ClaudeBufferCachePath()
+  let session = ''
+  if !empty($TMUX)
+    let session = substitute(system('tmux display-message -p "#S" 2>/dev/null'), '\n', '', 'g')
+  endif
+  if empty(session)
+    let session = 'default'
+  endif
+  return expand('~/.cache/claude-vim-buffers-') . session . '.txt'
+endfunction
+
 function! WriteClaudeBufferList()
   let cache_dir = expand('~/.cache')
   if !isdirectory(cache_dir)
@@ -191,11 +203,11 @@ function! WriteClaudeBufferList()
     let prefix = buf.bufnr == active_bufnr ? '* ' : '  '
     call add(lines, prefix . buf.name)
   endfor
-  call writefile(lines, cache_dir . '/claude-vim-buffers.txt')
+  call writefile(lines, ClaudeBufferCachePath())
 endfunction
 
 augroup ClaudeBufferList
   autocmd!
   autocmd BufEnter,BufWritePost,BufAdd,BufDelete * call WriteClaudeBufferList()
-  autocmd VimLeave * call delete(expand('~/.cache/claude-vim-buffers.txt'))
+  autocmd VimLeave * call delete(ClaudeBufferCachePath())
 augroup END
