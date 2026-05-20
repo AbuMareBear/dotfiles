@@ -11,7 +11,8 @@
       "Bash(sed -n:*)",
       "Bash(bin/normalize-i18n:*)",
       "Bash(bin/rubocop:*)",
-      "Bash(bin/lint:*)"
+      "Bash(bin/lint:*)",
+      "Bash(tmux display-message:*)"
     ]
   },
   "enabledPlugins": {
