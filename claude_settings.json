@@ -19,6 +19,7 @@
       "Bash(bin/rubocop:*)",
       "Bash(bin/lint:*)",
       "Bash(bin/rails db:rollback:*)",
+      "Bash(bin/rails g:*)",
       "Bash(gem build:*)",
       "Bash(gem contents:*)",
       "Bash(tar -t*)",
