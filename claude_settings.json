@@ -15,6 +15,9 @@
       "Bash(tmux display-message:*)",
       "Read(//Users/abdullahhashim/.claude/**)",
       "Read(.claude/**)"
+    ],
+    "deny": [
+      "Bash(gem push:*)"
     ]
   },
   "enabledPlugins": {
