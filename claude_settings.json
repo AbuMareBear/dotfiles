@@ -12,6 +12,7 @@
       "Bash(bin/normalize-i18n:*)",
       "Bash(bin/rubocop:*)",
       "Bash(bin/lint:*)",
+      "Bash(bin/rails db:rollback:*)",
       "Bash(gem build:*)",
       "Bash(gem contents:*)",
       "Bash(tar -t*)",
