@@ -27,6 +27,7 @@
       "Bash(gem build:*)",
       "Bash(gem contents:*)",
       "Bash(gh auth status)",
+      "Bash(gh pr checks:*)",
       "Bash(gh pr diff:*)",
       "Bash(tar -t*)",
       "Bash(tar -xO*)",
