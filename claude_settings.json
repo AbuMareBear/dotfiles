@@ -24,6 +24,7 @@
       "Bash(bin/lint:*)",
       "Bash(bin/rails db:rollback:*)",
       "Bash(bin/rails g:*)",
+      "Bash(bin/rails generate:*)",
       "Bash(gem build:*)",
       "Bash(gem contents:*)",
       "Bash(gh auth status)",
