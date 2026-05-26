@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Sets @claude_busy / @claude_idle on each tmux session.
+# Reads status from /tmp/claude-tmux-<pane_num> files written by Claude Code hooks.
+# Idle only shows if the file was written today.
+
+today_start=$(date -j -f '%Y-%m-%d %H:%M:%S' "$(date +%Y-%m-%d) 00:00:00" +%s)
+
+for session in $(tmux list-sessions -F '#{session_name}'); do
+  found=false
+
+  while IFS= read -r line; do
+    pane_id="${line%% *}"
+    cmd="${line#* }"
+
+    if [[ "$cmd" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+      status_file="/tmp/claude-tmux-${pane_id#%}"
+      if [ -f "$status_file" ]; then
+        status=$(cat "$status_file")
+        if [ "$status" = "busy" ]; then
+          found=true
+          tmux set-option -qt "$session" @claude_busy 1
+          tmux set-option -qut "$session" @claude_idle
+        elif [ "$status" = "idle" ]; then
+          mtime=$(stat -f %m "$status_file")
+          if [ "$mtime" -ge "$today_start" ]; then
+            found=true
+            tmux set-option -qt "$session" @claude_idle 1
+            tmux set-option -qut "$session" @claude_busy
+          fi
+        fi
+      fi
+      break
+    fi
+  done < <(tmux list-panes -t "$session" -F '#{pane_id} #{pane_current_command}' 2>/dev/null)
+
+  if [ "$found" = false ]; then
+    tmux set-option -qut "$session" @claude_busy
+    tmux set-option -qut "$session" @claude_idle
+  fi
+done
