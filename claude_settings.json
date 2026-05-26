@@ -46,6 +46,16 @@
     "typescript-lsp@claude-plugins-official": true
   },
   "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); message=$(echo \"$input\" | jq -r '.message // empty'); session=$([ -n \"$TMUX\" ] && tmux display-message -p '#S' 2>/dev/null); osascript -e \"display notification \\\"${message:-Claude needs attention}\\\" with title \\\"Claude Code${session:+ ($session)}\\\"\"; case \"$session\" in teamwork*) sound=Glass;; catberry*) sound=Hero;; forge*) sound=Submarine;; *) sound=Morse;; esac; afplay /System/Library/Sounds/$sound.aiff &"
+          }
+        ]
+      }
+    ],
     "UserPromptSubmit": [
       {
         "hooks": [
@@ -57,5 +67,6 @@
       }
     ]
   },
-  "effortLevel": "high"
+  "effortLevel": "high",
+  "preferredNotifChannel": "terminal_bell"
 }
