@@ -1,40 +1,61 @@
 #!/usr/bin/env bash
-# Sets @claude_busy / @claude_idle on each tmux session.
-# Reads status from /tmp/claude-tmux-<pane_num> files written by Claude Code hooks.
-# Idle only shows if the file was written today.
+# Sets session indicators for the tmux session chooser:
+#   @claude_busy / @claude_idle — from /tmp/claude-tmux-<pane_num> status files
+#   @dev_server — detects server processes running in session panes
 
 today_start=$(date -j -f '%Y-%m-%d %H:%M:%S' "$(date +%Y-%m-%d) 00:00:00" +%s)
 
 for session in $(tmux list-sessions -F '#{session_name}'); do
-  found=false
+  claude_found=false
+  dev_found=false
 
   while IFS= read -r line; do
     pane_id="${line%% *}"
-    cmd="${line#* }"
+    rest="${line#* }"
+    pane_tty="${rest%% *}"
+    cmd="${rest#* }"
 
-    if [[ "$cmd" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    # Claude Code detection (version number as command name)
+    if [[ "$cmd" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && [ "$claude_found" = false ]; then
       status_file="/tmp/claude-tmux-${pane_id#%}"
       if [ -f "$status_file" ]; then
         status=$(cat "$status_file")
         if [ "$status" = "busy" ]; then
-          found=true
+          claude_found=true
           tmux set-option -qt "$session" @claude_busy 1
           tmux set-option -qut "$session" @claude_idle
         elif [ "$status" = "idle" ]; then
           mtime=$(stat -f %m "$status_file")
           if [ "$mtime" -ge "$today_start" ]; then
-            found=true
+            claude_found=true
             tmux set-option -qt "$session" @claude_idle 1
             tmux set-option -qut "$session" @claude_busy
           fi
         fi
       fi
+    fi
+
+    # Dev server detection via processes on the pane's tty
+    if [ "$dev_found" = false ]; then
+      tty_short="${pane_tty#/dev/}"
+      if ps -o args= -t "$tty_short" 2>/dev/null | grep -qE '(puma|rails[[:space:]]s|foreman[[:space:]]start|overmind[[:space:]]start|next[[:space:]]dev|vite|webpack.*dev-server|bin/dev)'; then
+        dev_found=true
+      fi
+    fi
+
+    if [ "$claude_found" = true ] && [ "$dev_found" = true ]; then
       break
     fi
-  done < <(tmux list-panes -t "$session" -F '#{pane_id} #{pane_current_command}' 2>/dev/null)
+  done < <(tmux list-panes -t "$session" -F '#{pane_id} #{pane_tty} #{pane_current_command}' 2>/dev/null)
 
-  if [ "$found" = false ]; then
+  if [ "$claude_found" = false ]; then
     tmux set-option -qut "$session" @claude_busy
     tmux set-option -qut "$session" @claude_idle
+  fi
+
+  if [ "$dev_found" = true ]; then
+    tmux set-option -qt "$session" @dev_server 1
+  else
+    tmux set-option -qut "$session" @dev_server
   fi
 done
