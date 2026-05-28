@@ -4,10 +4,17 @@
 #   @dev_server — detects server processes running in session panes
 
 today_start=$(date -j -f '%Y-%m-%d %H:%M:%S' "$(date +%Y-%m-%d) 00:00:00" +%s)
+now=$(date +%s)
+active_decay_seconds=$((4 * 3600))
 
 for session in $(tmux list-sessions -F '#{session_name}'); do
   claude_found=false
   dev_found=false
+
+  last_attached=$(tmux show-option -qvt "$session" @last_attached)
+  if [ -n "$last_attached" ] && [ $((now - last_attached)) -gt "$active_decay_seconds" ]; then
+    tmux set-option -qut "$session" @active
+  fi
 
   while IFS= read -r line; do
     pane_id="${line%% *}"

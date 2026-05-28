@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Marks a tmux session as active and stamps its last-attached time.
+# Wired to client-session-changed in tmux.conf; the filtered chooser
+# (prefix s) reads @active and the indicator script decays it.
+
+session="$1"
+[ -z "$session" ] && exit 0
+
+tmux set-option -t "$session" @active 1
+tmux set-option -t "$session" @last_attached "$(date +%s)"
