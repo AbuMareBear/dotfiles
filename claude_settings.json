@@ -22,6 +22,7 @@
       "Bash(npx dotenv-cli -e .env.jest -- npx prisma migrate deploy 2>&1 | tail -30)",
       "Bash(bin/rubocop:*)",
       "Bash(bin/lint:*)",
+      "Bash(bin/ci:*)",
       "Bash(bin/rails db:rollback:*)",
       "Bash(bin/rails g:*)",
       "Bash(bin/rails generate:*)",
