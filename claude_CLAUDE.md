@@ -12,6 +12,8 @@ Never combine `cd` with output redirection (`2>/dev/null`, `2>&1`, `| tail`, `>`
 
 Never use `find ... -exec` — it can't be auto-allowed by a `Bash(find:*)` rule and forces a prompt. To find files, use the Glob tool; to search contents, use the Grep tool; to read a found file, use the Read tool. These dedicated tools don't hit the Bash guardrails at all.
 
+Avoid `$(...)` / backtick command substitution in Bash commands — the nested command can't be vetted against prefix permission rules and forces a manual approval prompt. Instead, run the inner command on its own first (use the Glob/Grep tools, or a standalone Bash call), then run the outer command with the explicit resolved values. (Arithmetic `$((...))` and variable `${...}` expansion are fine.)
+
 Don't search/read files by cramming exploration into elaborate shell one-liners (chained `&&`/`||` fallbacks, `-exec`, redirections, `cat`/`grep`/`find` pipelines). Reach for the Glob, Grep, and Read tools first — they're faster, never trip approval guardrails, and keep each step independently retryable.
 
 ## Git
