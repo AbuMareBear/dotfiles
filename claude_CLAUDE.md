@@ -14,6 +14,8 @@ Never use `find ... -exec` — it can't be auto-allowed by a `Bash(find:*)` rule
 
 Avoid `$(...)` / backtick command substitution in Bash commands — the nested command can't be vetted against prefix permission rules and forces a manual approval prompt. Instead, run the inner command on its own first (use the Glob/Grep tools, or a standalone Bash call), then run the outer command with the explicit resolved values. (Arithmetic `$((...))` and variable `${...}` expansion are fine.)
 
+Don't add decorative `echo` lines to commands — section headers like `echo "=== foo ==="` or status lines like `echo "exit: $?"`. They inject an extra sub-command that usually isn't allow-listed, forcing a permission prompt on an otherwise-clean compound. Run the real command on its own and read its output directly.
+
 Don't search/read files by cramming exploration into elaborate shell one-liners (chained `&&`/`||` fallbacks, `-exec`, redirections, `cat`/`grep`/`find` pipelines). Reach for the Glob, Grep, and Read tools first — they're faster, never trip approval guardrails, and keep each step independently retryable.
 
 ## Git
