@@ -6,7 +6,9 @@ The user often dictates prompts via voice input, so transcription errors are pos
 
 ## Shell tooling
 
-Prefer `grep` (or `rg`) over `awk` for line-matching tasks. Reach for `awk` only when you actually need field-aware logic — `$N` references, `BEGIN`/`END` blocks, or arithmetic on fields. A pattern-only awk one-liner (no action block) is almost always just `grep -E '<pattern>'`.
+For pattern searches across files, use the built-in Grep tool rather than shelling out to `rg`/`grep` in Bash — it is ripgrep under the hood, never triggers a permission prompt, and returns structured results. Only shell out to `rg` (now allow-listed) when you genuinely need something the Grep tool can't express, like piping matches into another command.
+
+For line-matching, prefer `grep`/`rg` over `awk`. Reach for `awk` only when you actually need field-aware logic — `$N` references, `BEGIN`/`END` blocks, or arithmetic on fields. A pattern-only awk one-liner (no action block) is almost always just `grep -E '<pattern>'`.
 
 Never combine `cd` with output redirection (`2>/dev/null`, `2>&1`, `| tail`, `>`, etc.) in a single compound command — this trips a built-in security guardrail ("path resolution bypass") that forces manual approval and can't be allowlisted. Instead, change directory in a standalone `cd` call first (the Bash tool's working directory persists across calls) or pass absolute paths, then run the redirecting command on its own.
 

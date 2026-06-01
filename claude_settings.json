@@ -3,6 +3,7 @@
     "allow": [
       "Bash(find:*)",
       "Bash(grep:*)",
+      "Bash(rg:*)",
       "Bash(git add:*)",
       "Bash(git checkout -b:*)",
       "Bash(git commit:*)",
