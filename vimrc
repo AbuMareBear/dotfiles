@@ -26,6 +26,23 @@ set noswapfile
 " Cap viminfo size to prevent huge registers from bloating ~/.viminfo
 set viminfo='100,<50,s10,h
 
+" Sweep orphaned ~/.viminfo temp files on startup.
+" Vim writes viminfo atomically via ~/.viminfo.tmp, then rotates through
+" ~/.viminfa.tmp..~/.viminfz.tmp when that name is taken. A vim killed before
+" the final rename (interrupted git-commit editor, closed pane, crash) orphans
+" one; once all 26 letters are orphaned, saving fails with E929. This clears
+" them before they accumulate. The 60s age guard avoids racing a live vim
+" that is mid-write at startup.
+function! CleanStaleViminfoTemps()
+  let l:now = localtime()
+  for l:f in glob(expand('~/.viminf[a-z].tmp'), 1, 1)
+    if l:now - getftime(l:f) > 60
+      call delete(l:f)
+    endif
+  endfor
+endfunction
+autocmd VimEnter * call CleanStaleViminfoTemps()
+
 set number
 set numberwidth=5
 
