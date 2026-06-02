@@ -7,6 +7,7 @@
       "Bash(git add:*)",
       "Bash(git checkout -b:*)",
       "Bash(git commit:*)",
+      "Bash(git fetch origin:*)",
       "Bash(git log:*)",
       "Bash(git pull:*)",
       "Bash(git push:*)",
