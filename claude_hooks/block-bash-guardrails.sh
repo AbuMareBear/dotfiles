@@ -12,6 +12,9 @@
 #      -> can't be auto-allowed by a Bash(find:*) prefix rule.
 #   3. $(...) or backtick command substitution
 #      -> the nested command can't be vetted against prefix permission rules.
+#   4. for / while / until shell loops
+#      -> the built-in approval heuristic flags the loop statement and a
+#         dynamic loop body can't be matched against prefix permission rules.
 #
 # On a match it prints a PreToolUse "deny" decision with a reason that steers
 # Claude toward the correct reformulation. On no match it stays silent and the
@@ -81,6 +84,15 @@ fi
 
 if [[ "$has_cd" == true && "$has_redir" == true ]]; then
   deny "This command combines \`cd\` with output redirection (>, 2>, |, etc.), which trips a built-in security guardrail (\"path resolution bypass\") and forces a manual approval prompt. Reformulate: run \`cd <path>\` as its own separate Bash call first (the working directory persists across calls), or pass absolute paths, then run the redirecting command on its own."
+fi
+
+# --- Pattern 4: for / while / until shell loops ---
+# Match a for/while/until keyword at command position paired with a `do` keyword
+# (for ((...)); do ...; done, for f in ...; do ...; done, while ...; do ...). The
+# do requirement keeps words like git "for-each-ref" or a stray "while" argument
+# from matching, and quoted occurrences are already stripped from noquotes.
+if printf '%s' "$noquotes" | grep -Eq '(^|[^[:alnum:]._-])(for|while|until)[[:space:]].*[[:space:];(]do([[:space:];]|$)'; then
+  deny "This command uses a shell loop (for/while/until), which the built-in approval heuristic flags as a loop statement and whose dynamic body can't be matched against prefix permission rules, forcing a manual approval prompt. Reformulate without a loop: run the command once per item as separate Bash calls (the working directory and shell state persist across calls), or use the Glob/Grep/Read tools to enumerate and read files instead of iterating in the shell."
 fi
 
 # No match: stay silent so the normal permission flow applies.
