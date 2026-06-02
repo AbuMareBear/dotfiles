@@ -18,6 +18,7 @@
       "Bash(git stash show:*)",
       "Bash(locate:*)",
       "Bash(sed -n:*)",
+      "Bash(bin/i18n-tasks:*)",
       "Bash(bin/normalize-i18n:*)",
       "Bash(bundle exec i18n-tasks:*)",
       "Bash(dotenv -e .env.jest -- npx prisma migrate deploy)",
