@@ -8,7 +8,9 @@ The user often dictates prompts via voice input, so transcription errors are pos
 
 For pattern searches across files, use the built-in Grep tool rather than shelling out to `rg`/`grep` in Bash — it is ripgrep under the hood, never triggers a permission prompt, and returns structured results. Only shell out to `rg` (now allow-listed) when you genuinely need something the Grep tool can't express, like piping matches into another command.
 
-For line-matching, prefer `grep`/`rg` over `awk`. Reach for `awk` only when you actually need field-aware logic — `$N` references, `BEGIN`/`END` blocks, or arithmetic on fields. A pattern-only awk one-liner (no action block) is almost always just `grep -E '<pattern>'`.
+For line-matching, prefer `grep`/`rg` over `awk`. Reach for `awk` only when you actually need field-aware logic — `$N` references, `BEGIN`/`END` blocks, or arithmetic on fields. A pattern-only awk one-liner (no action block) is almost always just `grep -E '<pattern>'`. `awk` is not allow-listed (and a blanket `Bash(awk:*)` would be a broader grant than the read-only tools, since awk can `system(...)` and `print > file`), so an awk command always forces a prompt.
+
+To extract a section or line-range from a file (e.g. one block of a YAML/config file, "from this line until the next top-level key"), don't reach for a flag-based `awk` range script — use the Read tool, the Grep tool with `-A`/`-B`/`-C` context, or `sed -n '/start/,/end/p'` (`sed -n` is already allow-listed). These don't prompt.
 
 Never combine `cd` with output redirection (`2>/dev/null`, `2>&1`, `| tail`, `>`, etc.) in a single compound command — this trips a built-in security guardrail ("path resolution bypass") that forces manual approval and can't be allowlisted. Instead, change directory in a standalone `cd` call first (the Bash tool's working directory persists across calls) or pass absolute paths, then run the redirecting command on its own.
 
