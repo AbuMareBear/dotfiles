@@ -12,6 +12,7 @@ packadd vim-rails
 packadd typescript-vim
 packadd vim-jsx-pretty
 packadd vim-prisma
+packadd vim-serbea
 
 " Add Homebrew-installed FZF to runtime path (macOS)
 set rtp+=/opt/homebrew/opt/fzf
