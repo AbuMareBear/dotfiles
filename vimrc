@@ -57,6 +57,12 @@ set clipboard=unnamed
 set textwidth=80
 set colorcolumn=+1
 
+" netrw (:e .) — hide symlinks. netrw tags symlinks with a trailing '@',
+" so hiding lines ending in '@' drops them. Toggle visibility with 'gh' in
+" a netrw window. Press 'a' to cycle hide modes if you need them back.
+let g:netrw_list_hide = '@$'
+let g:netrw_hide = 1
+
 " Color settings
 set background=dark
 syntax on
