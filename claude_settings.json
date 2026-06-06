@@ -43,6 +43,10 @@
     ],
     "deny": [
       "Bash(gem push:*)"
+    ],
+    "additionalDirectories": [
+      "/tmp",
+      "/private/tmp"
     ]
   },
   "enabledPlugins": {
