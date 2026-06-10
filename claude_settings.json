@@ -1,4 +1,8 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
       "Bash(find:*)",
@@ -63,6 +67,15 @@
         ]
       },
       {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/code/personal/dotfiles/claude_hooks/steer-dotfiles-edits.sh\""
+          }
+        ]
+      },
+      {
         "hooks": [
           {
             "type": "command",
@@ -113,9 +126,5 @@
     "typescript-lsp@claude-plugins-official": true
   },
   "effortLevel": "high",
-  "preferredNotifChannel": "terminal_bell",
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  }
+  "preferredNotifChannel": "terminal_bell"
 }
