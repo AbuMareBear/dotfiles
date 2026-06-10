@@ -49,10 +49,6 @@
       "/private/tmp"
     ]
   },
-  "enabledPlugins": {
-    "ruby-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
-  },
   "hooks": {
     "PreToolUse": [
       {
@@ -109,6 +105,10 @@
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "ruby-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
   },
   "effortLevel": "high",
   "preferredNotifChannel": "terminal_bell"
