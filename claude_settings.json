@@ -25,6 +25,7 @@
       "Bash(bin/i18n-tasks:*)",
       "Bash(bin/normalize-i18n:*)",
       "Bash(bundle check:*)",
+      "Bash(bundle list:*)",
       "Bash(bundle exec i18n-tasks:*)",
       "Bash(bundle exec rspec:*)",
       "Bash(bundle exec rubocop:*)",
