@@ -151,6 +151,7 @@ alias b="bin/bundle"
 alias rt="bin/rails test"
 alias n="npm run"
 alias p="npx prisma"
+alias e2e="npx playwright test e2e/tests/"
 alias kill3000="kill -9 $(lsof -i :3000 -t)"
 alias rs='bin/rspec'
 alias rsu='bin/rspec --exclude-pattern "spec/system/*_spec.rb"'
