@@ -16,6 +16,7 @@ ln -sf ~/code/personal/dotfiles/gitconfig ~/.gitconfig
 ln -sf ~/code/personal/dotfiles/tool-versions ~/.tool-versions
 ln -sf ~/code/personal/dotfiles/claude_settings.json ~/.claude/settings.json
 ln -sf ~/code/personal/dotfiles/claude_CLAUDE.md ~/.claude/CLAUDE.md
+ln -s ~/code/personal/dotfiles/claude_output_styles ~/.claude/output-styles
 mkdir -p ~/Library/Application\ Support/Claude
 ln -sf ~/code/personal/dotfiles/claude_desktop_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
 mkdir -p ~/.config/ghostty

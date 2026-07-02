@@ -30,6 +30,7 @@ ln -s ~/code/personal/dotfiles/gitignore_global ~/.gitignore_global
 ln -s ~/code/personal/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/code/personal/dotfiles/tool-versions ~/.tool-versions
 ln -s ~/code/personal/dotfiles/claude_settings.json ~/.claude/settings.json
+ln -s ~/code/personal/dotfiles/claude_output_styles ~/.claude/output-styles
 mkdir -p ~/Library/Application\ Support/Claude
 ln -s ~/code/personal/dotfiles/claude_desktop_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
 mkdir -p ~/Library/Application\ Support/Code/User
