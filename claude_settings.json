@@ -129,6 +129,6 @@
     "typescript-lsp@claude-plugins-official": true
   },
   "effortLevel": "high",
-  "preferredNotifChannel": "terminal_bell",
-  "model": "claude-fable-5[1m]"
+  "outputStyle": "Fable Voice",
+  "preferredNotifChannel": "terminal_bell"
 }
