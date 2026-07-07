@@ -27,3 +27,5 @@ Don't search/read files by cramming exploration into elaborate shell one-liners 
 ## Git
 
 Don't prefix git commands with `-C <path>` (or `cd <path> &&`) when already in that directory — the bare form (`git status`, `git diff`) matches common allow-list patterns; the prefixed form usually doesn't and forces a permission prompt.
+
+Don't create commits on your own. Finishing a task is not permission to commit it — wait for an explicit request (/commit, "commit this", etc.) before running git commit. The same goes for git push: only push when asked.
