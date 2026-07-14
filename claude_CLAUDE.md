@@ -22,6 +22,8 @@ Don't use shell loops (`for`/`while`/`until` … `do` … `done`) in Bash comman
 
 Don't add decorative `echo` lines to commands — section headers like `echo "=== foo ==="` or status lines like `echo "exit: $?"`. They inject an extra sub-command that usually isn't allow-listed, forcing a permission prompt on an otherwise-clean compound. Run the real command on its own and read its output directly.
 
+To capture the full output of a long-running command (test suites, builds) while only viewing the tail, don't pipe through `tee` (`cmd 2>&1 | tee file | tail`) — the `tee` segment is checked separately against permission rules, never matches the base command's allow rule, and forces a prompt on every run (the filename varies, so allow-listing the exact command is useless). Instead redirect (`cmd > file 2>&1`), then `tail`/Read/Grep the file in a separate call — the redirect stays inside the base command's allowed prefix and doesn't prompt. For very long runs, `run_in_background` also works: the harness captures the full output itself, no log file needed.
+
 Don't search/read files by cramming exploration into elaborate shell one-liners (chained `&&`/`||` fallbacks, `-exec`, redirections, `cat`/`grep`/`find` pipelines). Reach for the Glob, Grep, and Read tools first — they're faster, never trip approval guardrails, and keep each step independently retryable.
 
 ## Git
