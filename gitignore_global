@@ -74,3 +74,5 @@ package-lock.json
 # Local SSL certs
 www.teamworkonline.com-key.pem
 www.teamworkonline.com.pem
+
+**/.claude/settings.local.json
