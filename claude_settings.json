@@ -52,6 +52,7 @@
       "Bash(tar -xO*)",
       "Bash(tmux display-message:*)",
       "Read(//Users/abdullahhashim/.claude/**)",
+      "Read(//Users/abdullahhashim/Desktop/**)",
       "Read(//opt/homebrew/var/log/**)",
       "Read(.claude/**)"
     ],
