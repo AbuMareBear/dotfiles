@@ -21,6 +21,7 @@
       "Bash(git stash push:*)",
       "Bash(git stash show:*)",
       "Bash(locate:*)",
+      "Bash(ls:*)",
       "Bash(sed -n:*)",
       "Bash(bin/i18n-tasks:*)",
       "Bash(bin/normalize-i18n:*)",
