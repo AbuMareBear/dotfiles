@@ -29,6 +29,7 @@
       "Bash(bundle exec i18n-tasks:*)",
       "Bash(bundle exec rspec:*)",
       "Bash(bundle exec rubocop:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 90 http://localhost:3000)",
       "Bash(dotenv -e .env.jest -- npx prisma migrate deploy)",
       "Bash(npx dotenv-cli -e .env.jest -- npx prisma migrate deploy 2>&1 | tail -30)",
       "Bash(npx dotenv -e .env.jest -- prisma:*)",
