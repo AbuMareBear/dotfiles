@@ -33,6 +33,7 @@
       "Bash(npx dotenv-cli -e .env.jest -- npx prisma migrate deploy 2>&1 | tail -30)",
       "Bash(npx dotenv -e .env.jest -- prisma:*)",
       "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
       "Bash(npm run lint:*)",
       "Bash(npm run test:*)",
       "Bash(npm run typecheck:*)",
@@ -54,7 +55,9 @@
       "Read(//Users/abdullahhashim/.claude/**)",
       "Read(//Users/abdullahhashim/Desktop/**)",
       "Read(//opt/homebrew/var/log/**)",
-      "Read(.claude/**)"
+      "Read(.claude/**)",
+      "Read(.scratch/**)",
+      "Edit(.scratch/**)"
     ],
     "deny": [
       "Bash(gem push:*)"
