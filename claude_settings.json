@@ -15,6 +15,7 @@
       "Bash(git log:*)",
       "Bash(git pull:*)",
       "Bash(git push:*)",
+      "Bash(git rm:*)",
       "Bash(git stash)",
       "Bash(git stash list)",
       "Bash(git stash pop)",
@@ -143,5 +144,5 @@
   "outputStyle": "Fable Voice",
   "effortLevel": "high",
   "preferredNotifChannel": "terminal_bell",
-  "model": "claude-fable-5[1m]"
+  "model": "Fable"
 }
