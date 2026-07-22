@@ -45,6 +45,7 @@
       "Bash(bin/ci:*)",
       "Bash(bin/rails db:migrate:*)",
       "Bash(bin/rails db:rollback:*)",
+      "Bash(bin/rails db:test:prepare:*)",
       "Bash(bin/rails g:*)",
       "Bash(bin/rails generate:*)",
       "Bash(gem build:*)",
