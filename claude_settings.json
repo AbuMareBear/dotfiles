@@ -52,6 +52,8 @@
       "Bash(gem build:*)",
       "Bash(gem contents:*)",
       "Bash(gh auth status)",
+      "Bash(gh issue list:*)",
+      "Bash(gh issue view:*)",
       "Bash(gh pr checks:*)",
       "Bash(gh pr diff:*)",
       "Bash(gh pr view:*)",
