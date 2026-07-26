@@ -36,6 +36,7 @@
       "Bash(dotenv -e .env.jest -- npx prisma migrate deploy)",
       "Bash(npx dotenv-cli -e .env.jest -- npx prisma migrate deploy 2>&1 | tail -30)",
       "Bash(npx dotenv -e .env.jest -- prisma:*)",
+      "Bash(npx dotenv -e .env -- npx next:*)",
       "Bash(npm run build:*)",
       "Bash(npm run dev:*)",
       "Bash(npm run lint:*)",
