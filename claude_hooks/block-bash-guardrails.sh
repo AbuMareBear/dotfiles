@@ -15,6 +15,9 @@
 #   4. for / while / until shell loops
 #      -> the built-in approval heuristic flags the loop statement and a
 #         dynamic loop body can't be matched against prefix permission rules.
+#   5. Decorative echo sub-commands (`; echo "exit=$?"`, `echo "=== foo ==="`)
+#      -> the echo segment is never allow-listed, forcing a prompt on an
+#         otherwise-clean compound command.
 #
 # On a match it prints a PreToolUse "deny" decision with a reason that steers
 # Claude toward the correct reformulation. On no match it stays silent and the
@@ -93,6 +96,17 @@ fi
 # from matching, and quoted occurrences are already stripped from noquotes.
 if printf '%s' "$noquotes" | grep -Eq '(^|[^[:alnum:]._-])(for|while|until)[[:space:]].*[[:space:];(]do([[:space:];]|$)'; then
   deny "This command uses a shell loop (for/while/until), which the built-in approval heuristic flags as a loop statement and whose dynamic body can't be matched against prefix permission rules, forcing a manual approval prompt. Reformulate without a loop: run the command once per item as separate Bash calls (the working directory and shell state persist across calls), or use the Glob/Grep/Read tools to enumerate and read files instead of iterating in the shell."
+fi
+
+# --- Pattern 5: decorative echo status/header sub-commands ---
+# An echo that prints the exit code (`; echo "exit=$?"`) or a section header
+# (`echo "=== foo ==="`) adds a sub-command that is never allow-listed, so it
+# forces a prompt on an otherwise-clean command. $? is active inside double
+# quotes, so the exit-code check runs on nosingle (double-quoted text kept);
+# the header check needs quoted text intact, so it runs on flat.
+if printf '%s' "$nosingle" | grep -Eq '(^|[^[:alnum:]._/-])echo[[:space:]][^;&|]*\$\?' \
+   || printf '%s' "$flat" | grep -Eq '(^|[^[:alnum:]._/-])echo[[:space:]][^;&|]*==='; then
+  deny "This command includes a decorative echo (exit-code status or section header), an extra sub-command that is never allow-listed and forces a manual approval prompt. Rerun the command without the echo — the Bash tool already reports the exit code and separates output per command, so the echo adds nothing."
 fi
 
 # No match: stay silent so the normal permission flow applies.
