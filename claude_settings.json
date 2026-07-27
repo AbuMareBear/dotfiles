@@ -43,6 +43,7 @@
       "Bash(circleci run watch:*)",
       "Bash(circleci workflow list:*)",
       "Bash(circleci workflow get:*)",
+      "Bash(circleci workflow jobs:*)",
       "Bash(circleci job get:*)",
       "Bash(circleci job output:*)",
       "Bash(circleci job artifact:*)",
