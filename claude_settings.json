@@ -77,6 +77,8 @@
       "Bash(tar -t*)",
       "Bash(tar -xO*)",
       "Bash(tmux display-message:*)",
+      "Bash(tmux ls:*)",
+      "Bash(tmux list-sessions:*)",
       "Read(//Users/abdullahhashim/.claude/**)",
       "Read(//Users/abdullahhashim/Desktop/**)",
       "Read(//opt/homebrew/var/log/**)",
