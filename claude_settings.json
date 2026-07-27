@@ -47,6 +47,7 @@
       "Bash(circleci job get:*)",
       "Bash(circleci job output:*)",
       "Bash(circleci job artifact:*)",
+      "Bash(circleci testresult:*)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 90 http://localhost:3000)",
       "Bash(dotenv -e .env.jest -- npx prisma migrate deploy)",
       "Bash(npx dotenv-cli -e .env.jest -- npx prisma migrate deploy 2>&1 | tail -30)",
