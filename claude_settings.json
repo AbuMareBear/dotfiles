@@ -27,6 +27,7 @@
       "Bash(git stash pop)",
       "Bash(git stash push:*)",
       "Bash(git stash show:*)",
+      "Bash(git switch:*)",
       "Bash(locate:*)",
       "Bash(ls:*)",
       "Bash(mkdir:*)",
@@ -88,7 +89,10 @@
       "Edit(.scratch/**)"
     ],
     "deny": [
-      "Bash(gem push:*)"
+      "Bash(gem push:*)",
+      "Bash(git switch -f:*)",
+      "Bash(git switch --force:*)",
+      "Bash(git switch --discard-changes:*)"
     ],
     "additionalDirectories": [
       "/tmp",

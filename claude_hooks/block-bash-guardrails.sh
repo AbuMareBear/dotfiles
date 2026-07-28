@@ -18,6 +18,11 @@
 #   5. Decorative echo sub-commands (`; echo "exit=$?"`, `echo "=== foo ==="`)
 #      -> the echo segment is never allow-listed, forcing a prompt on an
 #         otherwise-clean compound command.
+#   6. `git switch` with -f / --force / --discard-changes
+#      -> unlike the other patterns this is a safety block, not a prompt
+#         avoider: these flags throw away uncommitted work irrecoverably, and
+#         the settings deny rules only match the flag-first form (a prefix rule
+#         can't see a flag placed after the branch name).
 #
 # On a match it prints a PreToolUse "deny" decision with a reason that steers
 # Claude toward the correct reformulation. On no match it stays silent and the
@@ -107,6 +112,13 @@ fi
 if printf '%s' "$nosingle" | grep -Eq '(^|[^[:alnum:]._/-])echo[[:space:]][^;&|]*\$\?' \
    || printf '%s' "$flat" | grep -Eq '(^|[^[:alnum:]._/-])echo[[:space:]][^;&|]*==='; then
   deny "This command includes a decorative echo (exit-code status or section header), an extra sub-command that is never allow-listed and forces a manual approval prompt. Rerun the command without the echo — the Bash tool already reports the exit code and separates output per command, so the echo adds nothing."
+fi
+
+# --- Pattern 6: git switch with a discard-changes flag (any position) ---
+# Scoped to the same command segment as `git switch` ([^;&|]* stops at command
+# separators) so a flag on a different sub-command (e.g. `rm -f`) doesn't match.
+if printf '%s' "$noquotes" | grep -Eq '(^|[^[:alnum:]._/-])git[[:space:]]+switch([[:space:]][^;&|]*)?[[:space:]](-f|--force|--discard-changes)([[:space:];&|]|$)'; then
+  deny "git switch with -f/--force/--discard-changes throws away uncommitted local changes with no way to recover them, and is deny-listed. Run plain \`git switch\` instead — it aborts safely if local changes conflict; in that case stash the changes first or ask the user how to proceed."
 fi
 
 # No match: stay silent so the normal permission flow applies.
