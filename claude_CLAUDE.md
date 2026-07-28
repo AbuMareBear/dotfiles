@@ -24,10 +24,14 @@ Don't add decorative `echo` lines to commands — section headers like `echo "==
 
 To capture the full output of a long-running command (test suites, builds) while only viewing the tail, don't pipe through `tee` (`cmd 2>&1 | tee file | tail`) — the `tee` segment is checked separately against permission rules, never matches the base command's allow rule, and forces a prompt on every run (the filename varies, so allow-listing the exact command is useless). Instead redirect (`cmd > file 2>&1`), then `tail`/Read/Grep the file in a separate call — the redirect stays inside the base command's allowed prefix and doesn't prompt. For very long runs, `run_in_background` also works: the harness captures the full output itself, no log file needed.
 
+Don't prefix commands with env-var assignments like `GH_PAGER=cat`, `PAGER=cat`, or `GIT_PAGER=cat` — the literal prefix stops the command from matching its allow-list rule (e.g. `Bash(gh issue view:*)`), forcing a prompt on an otherwise-allowed command. They're also unnecessary: `gh` and `git` disable paging automatically when stdout isn't a TTY, which is always the case in the Bash tool. Run the bare command instead.
+
 Don't search/read files by cramming exploration into elaborate shell one-liners (chained `&&`/`||` fallbacks, `-exec`, redirections, `cat`/`grep`/`find` pipelines). Reach for the Glob, Grep, and Read tools first — they're faster, never trip approval guardrails, and keep each step independently retryable.
 
 ## Git
 
 Don't prefix git commands with `-C <path>` (or `cd <path> &&`) when already in that directory — the bare form (`git status`, `git diff`) matches common allow-list patterns; the prefixed form usually doesn't and forces a permission prompt.
+
+To change branches, use `git switch <branch>` (or `git switch -c <branch>` to create one) — never `git checkout <branch>`. `git switch` is allow-listed and runs without a prompt; `checkout` always prompts because its grammar also covers the destructive file-overwrite form, which a prefix rule can't distinguish. Never pass `-f`/`--force`/`--discard-changes` to `git switch` — those discard uncommitted work and are deny-listed; if a switch is blocked by local changes, stash them or ask the user.
 
 Don't create commits on your own. Finishing a task is not permission to commit it — wait for an explicit request (/commit, "commit this", etc.) before running git commit. The same goes for git push: only push when asked.
