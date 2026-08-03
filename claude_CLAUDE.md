@@ -26,6 +26,8 @@ To capture the full output of a long-running command (test suites, builds) while
 
 Don't prefix commands with env-var assignments like `GH_PAGER=cat`, `PAGER=cat`, or `GIT_PAGER=cat` — the literal prefix stops the command from matching its allow-list rule (e.g. `Bash(gh issue view:*)`), forcing a prompt on an otherwise-allowed command. They're also unnecessary: `gh` and `git` disable paging automatically when stdout isn't a TTY, which is always the case in the Bash tool. Run the bare command instead.
 
+When an env-var assignment is genuinely needed, use only the exact prefix that is allow-listed and never stack extra assignments onto it — each added assignment changes the literal prefix and breaks matching. `Bash(ENABLE_DEV_LOGIN=true npm run dev:*)` is allow-listed, so `ENABLE_DEV_LOGIN=true npm run dev -- -p 3599` runs without a prompt, while `ENABLE_DEV_LOGIN=true PORT=3599 npm run dev` prompts. If a setting can be passed as a flag after the command (like a port via `-- -p <port>`), pass it as a flag, not as another env assignment.
+
 Don't search/read files by cramming exploration into elaborate shell one-liners (chained `&&`/`||` fallbacks, `-exec`, redirections, `cat`/`grep`/`find` pipelines). Reach for the Glob, Grep, and Read tools first — they're faster, never trip approval guardrails, and keep each step independently retryable.
 
 ## Git
