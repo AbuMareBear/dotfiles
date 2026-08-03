@@ -59,6 +59,7 @@
       "Bash(npx dotenv -e .env -- npx next:*)",
       "Bash(npm run build:*)",
       "Bash(npm run dev:*)",
+      "Bash(ENABLE_DEV_LOGIN=true npm run dev:*)",
       "Bash(npm run lint:*)",
       "Bash(npm run reset-dev:*)",
       "Bash(npm run seed:*)",
