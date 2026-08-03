@@ -1,0 +1,27 @@
+#!/bin/bash
+# Poll a local dev server until it responds, then print the HTTP status code.
+# Exists because a Bash allow rule can't wildcard the port inside a URL
+# (a trailing :* only matches at a word boundary), so raw curl status
+# checks against http://localhost:<port> always hit a permission prompt.
+# Usage: await-localhost <port> [timeout-seconds]
+set -u
+
+port="${1:-}"
+timeout="${2:-60}"
+
+if ! [[ "$port" =~ ^[0-9]+$ ]] || ! [[ "$timeout" =~ ^[0-9]+$ ]]; then
+  echo "usage: await-localhost <port> [timeout-seconds]" >&2
+  exit 2
+fi
+
+for ((i = 0; i < timeout; i++)); do
+  code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 5 "http://localhost:${port}/")
+  if [ "$code" != "000" ]; then
+    echo "$code"
+    exit 0
+  fi
+  sleep 1
+done
+
+echo "timed out after ${timeout}s waiting for http://localhost:${port}/" >&2
+exit 1

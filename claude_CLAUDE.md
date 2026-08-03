@@ -28,6 +28,8 @@ Don't prefix commands with env-var assignments like `GH_PAGER=cat`, `PAGER=cat`,
 
 When an env-var assignment is genuinely needed, use only the exact prefix that is allow-listed and never stack extra assignments onto it — each added assignment changes the literal prefix and breaks matching. `Bash(ENABLE_DEV_LOGIN=true npm run dev:*)` is allow-listed, so `ENABLE_DEV_LOGIN=true npm run dev -- -p 3599` runs without a prompt, while `ENABLE_DEV_LOGIN=true PORT=3599 npm run dev` prompts. If a setting can be passed as a flag after the command (like a port via `-- -p <port>`), pass it as a flag, not as another env assignment.
 
+To wait for a local dev server to come up, or to check whether it's responding, don't hand-roll `sleep N; curl ... http://localhost:<port>/` — no curl allow rule can cover a varying port (a trailing `:*` wildcard only matches at a word boundary, so `http://localhost:*` never matches `http://localhost:3599/`), and each new port forces a prompt. Use the allow-listed helper instead: `~/code/personal/dotfiles/claude_bin/await-localhost <port> [timeout-seconds]` polls once per second until the server responds, prints the HTTP status code, and exits non-zero on timeout (default 60s) — no separate `sleep` needed.
+
 Don't search/read files by cramming exploration into elaborate shell one-liners (chained `&&`/`||` fallbacks, `-exec`, redirections, `cat`/`grep`/`find` pipelines). Reach for the Glob, Grep, and Read tools first — they're faster, never trip approval guardrails, and keep each step independently retryable.
 
 ## Git
