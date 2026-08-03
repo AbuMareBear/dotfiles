@@ -96,6 +96,7 @@
       "Read(//opt/homebrew/var/log/**)",
       "Read(.claude/**)",
       "Read(.scratch/**)",
+      "Edit(//Users/abdullahhashim/code/**)",
       "Edit(.scratch/**)"
     ],
     "deny": [
