@@ -180,6 +180,7 @@
     "ruby-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
+  "cleanupPeriodDays": 3,
   "outputStyle": "Fable Voice",
   "effortLevel": "high",
   "preferredNotifChannel": "terminal_bell",
