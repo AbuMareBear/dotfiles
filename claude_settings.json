@@ -86,6 +86,7 @@
       "Bash(bin/rails db:test:prepare:*)",
       "Bash(bin/rails g:*)",
       "Bash(bin/rails generate:*)",
+      "Bash(bin/rake assets:precompile:*)",
       "Bash(gem build:*)",
       "Bash(gem contents:*)",
       "Bash(gh auth status)",
