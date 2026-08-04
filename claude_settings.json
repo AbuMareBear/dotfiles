@@ -71,6 +71,8 @@
       "Bash(npm run seed:*)",
       "Bash(npm run test:*)",
       "Bash(npm run typecheck:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm run lint:*)",
       "Bash(pnpm stylelint:*)",
       "Bash(bin/rubocop:*)",
       "Bash(bin/lint:*)",
