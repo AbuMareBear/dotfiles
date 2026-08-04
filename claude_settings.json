@@ -44,6 +44,7 @@
       "Bash(bundle exec i18n-tasks:*)",
       "Bash(bundle exec rspec:*)",
       "Bash(bundle exec rubocop:*)",
+      "Bash(bundle exec slimrb:*)",
       "Bash(circleci help:*)",
       "Bash(circleci run list:*)",
       "Bash(circleci run get:*)",
