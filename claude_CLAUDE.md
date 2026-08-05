@@ -12,6 +12,8 @@ For line-matching, prefer `grep`/`rg` over `awk`. Reach for `awk` only when you 
 
 To extract a section or line-range from a file (e.g. one block of a YAML/config file, "from this line until the next top-level key"), don't reach for a flag-based `awk` range script — use the Read tool, the Grep tool with `-A`/`-B`/`-C` context, or `sed -n '/start/,/end/p'` (`sed -n` is already allow-listed). These don't prompt.
 
+Never use `sed -i` to edit files — in-place sed always forces a prompt (only read-only `sed -n` is allow-listed, and a `sed -i` allow rule can't be scoped to project files). Use the Edit tool instead: it does the same substitution (with `replace_all` for repeated occurrences) and never prompts inside the project. This includes bulk edits across multiple files — make one Edit call per file rather than a sed sweep.
+
 Never combine `cd` with output redirection (`2>/dev/null`, `2>&1`, `| tail`, `>`, etc.) in a single compound command — this trips a built-in security guardrail ("path resolution bypass") that forces manual approval and can't be allowlisted. Instead, change directory in a standalone `cd` call first (the Bash tool's working directory persists across calls) or pass absolute paths, then run the redirecting command on its own.
 
 Never use `find ... -exec` — it can't be auto-allowed by a `Bash(find:*)` rule and forces a prompt. To find files, use the Glob tool; to search contents, use the Grep tool; to read a found file, use the Read tool. These dedicated tools don't hit the Bash guardrails at all.
