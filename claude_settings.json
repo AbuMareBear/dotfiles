@@ -72,6 +72,7 @@
       "Bash(npm run test:*)",
       "Bash(npm run typecheck:*)",
       "Bash(pnpm exec eslint:*)",
+      "Bash(pnpm exec stylelint:*)",
       "Bash(pnpm lint:*)",
       "Bash(pnpm lint:css:*)",
       "Bash(pnpm run lint:*)",
