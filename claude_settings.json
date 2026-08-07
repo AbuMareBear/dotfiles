@@ -101,6 +101,7 @@
       "Bash(gh pr list:*)",
       "Bash(gh pr status:*)",
       "Bash(gh pr view:*)",
+      "Bash(gh search:*)",
       "Bash(tar -t*)",
       "Bash(tar -xO*)",
       "Bash(tmux display-message:*)",
