@@ -70,6 +70,8 @@
       "Bash(npm run reset-dev:*)",
       "Bash(npm run seed:*)",
       "Bash(npm run test:*)",
+      "Bash(npm run test:e2e:*)",
+      "Bash(PLAYWRIGHT_MODE=development npm run test:e2e:*)",
       "Bash(npm run typecheck:*)",
       "Bash(pnpm exec eslint:*)",
       "Bash(pnpm exec stylelint:*)",
