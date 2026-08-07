@@ -107,6 +107,7 @@
       "Bash(tmux ls:*)",
       "Bash(tmux list-sessions:*)",
       "Read(//Users/abdullahhashim/.claude/**)",
+      "Read(//Users/abdullahhashim/code/personal/dotfiles/**)",
       "Read(//Users/abdullahhashim/code/clients/forge-app/**)",
       "Read(//Users/abdullahhashim/Desktop/**)",
       "Read(//opt/homebrew/var/log/**)",
