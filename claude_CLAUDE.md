@@ -34,6 +34,8 @@ To wait for a local dev server to come up, or to check whether it's responding, 
 
 Don't search/read files by cramming exploration into elaborate shell one-liners (chained `&&`/`||` fallbacks, `-exec`, redirections, `cat`/`grep`/`find` pipelines). Reach for the Glob, Grep, and Read tools first — they're faster, never trip approval guardrails, and keep each step independently retryable.
 
+Don't invoke asdf-managed tools via their shim paths (`~/.asdf/shims/bundle`, `~/.asdf/shims/ruby`, etc.) — the path prefix stops the command from matching its allow-list rule (e.g. `Bash(bundle exec i18n-tasks:*)`), forcing a prompt on an otherwise-allowed command. The shims directory is already on PATH in the Bash tool, so run the bare command (`bundle exec ...`, `ruby ...`) instead.
+
 ## Git
 
 Don't prefix git commands with `-C <path>` (or `cd <path> &&`) when already in that directory — the bare form (`git status`, `git diff`) matches common allow-list patterns; the prefixed form usually doesn't and forces a permission prompt.
