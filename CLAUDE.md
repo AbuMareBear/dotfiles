@@ -23,6 +23,7 @@ The dotfiles are installed by creating symbolic links from this repository to th
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ln -s ~/code/personal/dotfiles/zshrc ~/.zshrc
+ln -s ~/code/personal/dotfiles/zprofile ~/.zprofile
 ln -s ~/code/personal/dotfiles/gemrc ~/.gemrc
 ln -s ~/code/personal/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/code/personal/dotfiles/vimrc ~/.vimrc

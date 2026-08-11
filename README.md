@@ -8,6 +8,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ```bash
 ln -sf ~/code/personal/dotfiles/zshrc ~/.zshrc
+ln -sf ~/code/personal/dotfiles/zprofile ~/.zprofile
 ln -sf ~/code/personal/dotfiles/gemrc ~/.gemrc
 ln -sf ~/code/personal/dotfiles/tmux.conf ~/.tmux.conf
 ln -sf ~/code/personal/dotfiles/vimrc ~/.vimrc
