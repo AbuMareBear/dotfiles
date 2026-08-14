@@ -68,6 +68,7 @@
       "Bash(npx dotenv -e .env -- npx next:*)",
       "Bash(npx playwright:*)",
       "Bash(PLAYWRIGHT_BASE_PORT=3350 npx playwright:*)",
+      "Bash(PLAYWRIGHT_MODE=development npx playwright:*)",
       "Bash(npm run build:*)",
       "Bash(npm run dev:*)",
       "Bash(ENABLE_DEV_LOGIN=true npm run dev:*)",
