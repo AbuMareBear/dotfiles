@@ -65,6 +65,8 @@
       "Bash(npx dotenv-cli -e .env.jest -- npx prisma migrate deploy 2>&1 | tail -30)",
       "Bash(npx dotenv -e .env.jest -- prisma:*)",
       "Bash(npx dotenv -e .env -- npx next:*)",
+      "Bash(npx playwright:*)",
+      "Bash(PLAYWRIGHT_BASE_PORT=3350 npx playwright:*)",
       "Bash(npm run build:*)",
       "Bash(npm run dev:*)",
       "Bash(ENABLE_DEV_LOGIN=true npm run dev:*)",
