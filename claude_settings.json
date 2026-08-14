@@ -64,6 +64,7 @@
       "Bash(dotenv -e .env.jest -- npx prisma migrate deploy)",
       "Bash(npx dotenv-cli -e .env.jest -- npx prisma migrate deploy 2>&1 | tail -30)",
       "Bash(npx dotenv -e .env.jest -- prisma:*)",
+      "Bash(npx dotenv -e .env -- node:*)",
       "Bash(npx dotenv -e .env -- npx next:*)",
       "Bash(npx playwright:*)",
       "Bash(PLAYWRIGHT_BASE_PORT=3350 npx playwright:*)",
@@ -123,6 +124,10 @@
     ],
     "deny": [
       "Bash(gem push:*)",
+      "Bash(npx dotenv -e .env -- node -e:*)",
+      "Bash(npx dotenv -e .env -- node --eval:*)",
+      "Bash(npx dotenv -e .env -- node -p:*)",
+      "Bash(npx dotenv -e .env -- node --print:*)",
       "Bash(git switch -f:*)",
       "Bash(git switch --force:*)",
       "Bash(git switch --discard-changes:*)"
