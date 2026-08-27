@@ -206,3 +206,6 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 
 # Reduce Ruby warnings
 export RUBYOPT="-W0"
+
+# direnv - per-directory environment variables
+eval "$(direnv hook zsh)"
