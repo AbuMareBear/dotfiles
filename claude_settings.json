@@ -206,8 +206,15 @@
   },
   "enabledPlugins": {
     "ruby-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "vercel@claude-plugins-official": true
   },
   "effortLevel": "high",
-  "preferredNotifChannel": "terminal_bell"
+  "awaySummaryEnabled": false,
+  "editorMode": "vim",
+  "preferredNotifChannel": "terminal_bell",
+  "autoContinueAtUsageLimit": false,
+  "fileCheckpointingEnabled": false,
+  "remoteControlAtStartup": false,
+  "agentPushNotifEnabled": true
 }
