@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Sets session indicators for the tmux session chooser:
 #   @claude_busy / @claude_idle — from /tmp/claude-tmux-<pane_num> status files
+#   @claude_shell — Claude has a live Bash-tool shell child (catches background
+#     commands still running even when the status file says idle)
 #   @dev_server — detects server processes running in session panes
 
 today_start=$(date -j -f '%Y-%m-%d %H:%M:%S' "$(date +%Y-%m-%d) 00:00:00" +%s)
@@ -9,6 +11,7 @@ active_decay_seconds=$((12 * 3600))
 
 for session in $(tmux list-sessions -F '#{session_name}'); do
   claude_found=false
+  shell_found=false
   dev_found=false
 
   last_attached=$(tmux show-option -qvt "$session" @last_attached)
@@ -19,26 +22,41 @@ for session in $(tmux list-sessions -F '#{session_name}'); do
   while IFS= read -r line; do
     pane_id="${line%% *}"
     rest="${line#* }"
+    pane_pid="${rest%% *}"
+    rest="${rest#* }"
     pane_tty="${rest%% *}"
     cmd="${rest#* }"
 
     # Claude Code detection (version number as command name)
-    if [[ "$cmd" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && [ "$claude_found" = false ]; then
-      status_file="/tmp/claude-tmux-${pane_id#%}"
-      if [ -f "$status_file" ]; then
-        status=$(cat "$status_file")
-        if [ "$status" = "busy" ]; then
-          claude_found=true
-          tmux set-option -qt "$session" @claude_busy 1
-          tmux set-option -qut "$session" @claude_idle
-        elif [ "$status" = "idle" ]; then
-          mtime=$(stat -f %m "$status_file")
-          if [ "$mtime" -ge "$today_start" ]; then
+    if [[ "$cmd" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+      if [ "$claude_found" = false ]; then
+        status_file="/tmp/claude-tmux-${pane_id#%}"
+        if [ -f "$status_file" ]; then
+          status=$(cat "$status_file")
+          if [ "$status" = "busy" ]; then
             claude_found=true
-            tmux set-option -qt "$session" @claude_idle 1
-            tmux set-option -qut "$session" @claude_busy
+            tmux set-option -qt "$session" @claude_busy 1
+            tmux set-option -qut "$session" @claude_idle
+          elif [ "$status" = "idle" ]; then
+            mtime=$(stat -f %m "$status_file")
+            if [ "$mtime" -ge "$today_start" ]; then
+              claude_found=true
+              tmux set-option -qt "$session" @claude_idle 1
+              tmux set-option -qut "$session" @claude_busy
+            fi
           fi
         fi
+      fi
+
+      # Bash-tool shell detection: claude runs commands as zsh/bash children
+      # (-a includes ancestors, which macOS pgrep otherwise excludes)
+      if [ "$shell_found" = false ]; then
+        for claude_pid in $(pgrep -aP "$pane_pid"); do
+          if pgrep -aP "$claude_pid" -x 'zsh|bash' >/dev/null 2>&1; then
+            shell_found=true
+            break
+          fi
+        done
       fi
     fi
 
@@ -50,14 +68,20 @@ for session in $(tmux list-sessions -F '#{session_name}'); do
       fi
     fi
 
-    if [ "$claude_found" = true ] && [ "$dev_found" = true ]; then
+    if [ "$claude_found" = true ] && [ "$shell_found" = true ] && [ "$dev_found" = true ]; then
       break
     fi
-  done < <(tmux list-panes -t "$session" -F '#{pane_id} #{pane_tty} #{pane_current_command}' 2>/dev/null)
+  done < <(tmux list-panes -t "$session" -F '#{pane_id} #{pane_pid} #{pane_tty} #{pane_current_command}' 2>/dev/null)
 
   if [ "$claude_found" = false ]; then
     tmux set-option -qut "$session" @claude_busy
     tmux set-option -qut "$session" @claude_idle
+  fi
+
+  if [ "$shell_found" = true ]; then
+    tmux set-option -qt "$session" @claude_shell 1
+  else
+    tmux set-option -qut "$session" @claude_shell
   fi
 
   if [ "$dev_found" = true ]; then
