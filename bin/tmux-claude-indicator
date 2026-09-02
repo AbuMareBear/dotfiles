@@ -7,7 +7,7 @@
 
 today_start=$(date -j -f '%Y-%m-%d %H:%M:%S' "$(date +%Y-%m-%d) 00:00:00" +%s)
 now=$(date +%s)
-active_decay_seconds=$((12 * 3600))
+active_decay_seconds=$((5 * 3600))
 
 for session in $(tmux list-sessions -F '#{session_name}'); do
   claude_found=false
