@@ -47,6 +47,7 @@
       "Bash(bundle check:*)",
       "Bash(bundle list:*)",
       "Bash(bundle exec i18n-tasks:*)",
+      "Bash(i18n-tasks:*)",
       "Bash(bundle exec rspec:*)",
       "Bash(bundle exec rubocop:*)",
       "Bash(bundle exec slimrb:*)",
@@ -138,6 +139,7 @@
       "/private/tmp"
     ]
   },
+  "model": "sonnet",
   "hooks": {
     "PreToolUse": [
       {
