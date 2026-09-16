@@ -139,7 +139,6 @@
       "/private/tmp"
     ]
   },
-  "model": "sonnet",
   "hooks": {
     "PreToolUse": [
       {
