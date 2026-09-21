@@ -4,89 +4,90 @@
 #   @claude_shell — Claude has a live Bash-tool shell child (catches background
 #     commands still running even when the status file says idle)
 #   @dev_server — detects server processes running in session panes
+#
+# The chooser blocks on this script, so it takes one snapshot each of the
+# process table, the status files and the panes, works everything out in a
+# single awk pass, and applies the result with one tmux invocation — spawning
+# processes per session/pane made the chooser visibly laggy.
 
 today_start=$(date -j -f '%Y-%m-%d %H:%M:%S' "$(date +%Y-%m-%d) 00:00:00" +%s)
 now=$(date +%s)
 active_decay_seconds=$((5 * 3600))
 
-for session in $(tmux list-sessions -F '#{session_name}'); do
-  claude_found=false
-  shell_found=false
-  dev_found=false
+{
+  ps -axo pid=,ppid=,tty=,ucomm=,args=
+  echo '@@'
+  stat -f '%m %N' /tmp/claude-tmux-* 2>/dev/null
+  echo '@@'
+  tmux list-panes -a -F '#{session_id}	#{pane_id}	#{pane_pid}	#{pane_tty}	#{pane_current_command}	#{@last_attached}'
+} | awk -v today_start="$today_start" -v now="$now" -v decay="$active_decay_seconds" '
+  $0 == "@@" { part++; if (part == 2) FS = "\t"; next }
 
-  last_attached=$(tmux show-option -qvt "$session" @last_attached)
-  if [ -n "$last_attached" ] && [ $((now - last_attached)) -gt "$active_decay_seconds" ]; then
-    tmux set-option -qut "$session" @active
-  fi
+  # Process table
+  part == 0 {
+    kids[$2] = kids[$2] " " $1
+    ucomm[$1] = $4
+    # Dev server detection via processes on the pane tty
+    if ($0 ~ /(puma|rails[[:space:]]s|foreman[[:space:]]start|overmind[[:space:]]start|next[[:space:]]dev|vite|webpack.*dev-server|bin\/dev)/)
+      dev_tty[$3] = 1
+    next
+  }
 
-  while IFS= read -r line; do
-    pane_id="${line%% *}"
-    rest="${line#* }"
-    pane_pid="${rest%% *}"
-    rest="${rest#* }"
-    pane_tty="${rest%% *}"
-    cmd="${rest#* }"
+  # Status file mtimes
+  part == 1 { mtime[$2] = $1; next }
+
+  # Panes
+  {
+    session = $1; pane_id = $2; pane_pid = $3; pane_tty = $4; cmd = $5
+    if (!(session in seen)) {
+      seen[session] = 1
+      sessions[++count] = session
+      if ($6 != "" && now - $6 > decay) expired[session] = 1
+    }
 
     # Claude Code detection (version number as command name)
-    if [[ "$cmd" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-      if [ "$claude_found" = false ]; then
-        status_file="/tmp/claude-tmux-${pane_id#%}"
-        if [ -f "$status_file" ]; then
-          status=$(cat "$status_file")
-          if [ "$status" = "busy" ]; then
-            claude_found=true
-            tmux set-option -qt "$session" @claude_busy 1
-            tmux set-option -qut "$session" @claude_idle
-          elif [ "$status" = "idle" ]; then
-            mtime=$(stat -f %m "$status_file")
-            if [ "$mtime" -ge "$today_start" ]; then
-              claude_found=true
-              tmux set-option -qt "$session" @claude_idle 1
-              tmux set-option -qut "$session" @claude_busy
-            fi
-          fi
-        fi
-      fi
+    if (cmd ~ /^[0-9]+\.[0-9]+\.[0-9]+$/) {
+      if (!(session in claude)) {
+        status_file = "/tmp/claude-tmux-" substr(pane_id, 2)
+        if (status_file in mtime) {
+          status = ""
+          getline status < status_file
+          close(status_file)
+          if (status == "busy")
+            claude[session] = "busy"
+          else if (status == "idle" && mtime[status_file] >= today_start)
+            claude[session] = "idle"
+        }
+      }
 
       # Bash-tool shell detection: claude runs commands as zsh/bash children
-      # (-a includes ancestors, which macOS pgrep otherwise excludes)
-      if [ "$shell_found" = false ]; then
-        for claude_pid in $(pgrep -aP "$pane_pid"); do
-          if pgrep -aP "$claude_pid" -x 'zsh|bash' >/dev/null 2>&1; then
-            shell_found=true
-            break
-          fi
-        done
-      fi
-    fi
+      if (!(session in shell)) {
+        n = split(kids[pane_pid], children, " ")
+        for (i = 1; i <= n && !(session in shell); i++) {
+          m = split(kids[children[i]], grandchildren, " ")
+          for (j = 1; j <= m; j++)
+            if (ucomm[grandchildren[j]] ~ /^(zsh|bash)$/) { shell[session] = 1; break }
+        }
+      }
+    }
 
-    # Dev server detection via processes on the pane's tty
-    if [ "$dev_found" = false ]; then
-      tty_short="${pane_tty#/dev/}"
-      if ps -o args= -t "$tty_short" 2>/dev/null | grep -qE '(puma|rails[[:space:]]s|foreman[[:space:]]start|overmind[[:space:]]start|next[[:space:]]dev|vite|webpack.*dev-server|bin/dev)'; then
-        dev_found=true
-      fi
-    fi
+    tty_short = pane_tty
+    sub("^/dev/", "", tty_short)
+    if (tty_short in dev_tty) dev[session] = 1
+  }
 
-    if [ "$claude_found" = true ] && [ "$shell_found" = true ] && [ "$dev_found" = true ]; then
-      break
-    fi
-  done < <(tmux list-panes -t "$session" -F '#{pane_id} #{pane_pid} #{pane_tty} #{pane_current_command}' 2>/dev/null)
+  function set(session, option, on) {
+    printf "set-option -q%st \047%s\047 %s%s\n", (on ? "" : "u"), session, option, (on ? " 1" : "")
+  }
 
-  if [ "$claude_found" = false ]; then
-    tmux set-option -qut "$session" @claude_busy
-    tmux set-option -qut "$session" @claude_idle
-  fi
-
-  if [ "$shell_found" = true ]; then
-    tmux set-option -qt "$session" @claude_shell 1
-  else
-    tmux set-option -qut "$session" @claude_shell
-  fi
-
-  if [ "$dev_found" = true ]; then
-    tmux set-option -qt "$session" @dev_server 1
-  else
-    tmux set-option -qut "$session" @dev_server
-  fi
-done
+  END {
+    for (k = 1; k <= count; k++) {
+      session = sessions[k]
+      if (session in expired) set(session, "@active", 0)
+      set(session, "@claude_busy", claude[session] == "busy")
+      set(session, "@claude_idle", claude[session] == "idle")
+      set(session, "@claude_shell", session in shell)
+      set(session, "@dev_server", session in dev)
+    }
+  }
+' | tmux source-file -
