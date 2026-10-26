@@ -146,6 +146,7 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias g="git"
+alias /clear="clear" # Claude Code muscle memory
 alias r="bin/rails"
 alias b="bin/bundle"
 alias rt="bin/rails test"
