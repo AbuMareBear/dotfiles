@@ -139,7 +139,7 @@
       "/private/tmp"
     ]
   },
-  "model": "opus",
+  "model": "fable",
   "hooks": {
     "PreToolUse": [
       {
@@ -148,6 +148,10 @@
           {
             "type": "command",
             "command": "bash \"$HOME/code/personal/dotfiles/claude_hooks/block-bash-guardrails.sh\""
+          },
+          {
+            "type": "command",
+            "command": "bash \"$HOME/code/clients/forge-sidecar/hooks/deny-forge-0-worktree.sh\""
           }
         ]
       },
@@ -218,5 +222,6 @@
   "autoContinueAtUsageLimit": false,
   "fileCheckpointingEnabled": false,
   "remoteControlAtStartup": false,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "feedbackDrafts": "off"
 }
