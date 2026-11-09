@@ -19,3 +19,5 @@
 	branch = cat
 [fetch]
 	prune = true
+[credential "https://git.heroku.com"]
+	helper = !heroku git:credentials
