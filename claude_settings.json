@@ -5,6 +5,7 @@
     "pr": ""
   },
   "permissions": {
+    "defaultMode": "auto",
     "allow": [
       "Bash(find:*)",
       "Bash(grep:*)",
